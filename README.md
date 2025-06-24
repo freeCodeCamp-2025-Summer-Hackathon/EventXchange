@@ -7,3 +7,4 @@
 - Sage (Khalil A)
 - LittleInksmith (Zaynab JC)
 - Keith (Keith Miquela)
+- dfdx2 (D Davis)
