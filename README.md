@@ -12,3 +12,4 @@
 - [Tailsmonster (Nico Aroca)](https://github.com/tailsmonster)
 
 - Vessel
+- Jolene (JoleneKearse)
