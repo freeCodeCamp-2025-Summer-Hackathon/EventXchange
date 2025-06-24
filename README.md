@@ -4,4 +4,4 @@
 
 - BrettK (Brett Kinnamon)
 - _breee (Brecon N)
-- ~Sage~ (Khalil A)
+- Sage (Khalil A)
