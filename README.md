@@ -2,4 +2,4 @@
 
 ## Members
 
-- BrettK (Brett Kinnamon0)
+- BrettK (Brett Kinnamon)
