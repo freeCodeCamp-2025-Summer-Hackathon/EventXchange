@@ -13,3 +13,6 @@
 
 - Vessel
 - Jolene (JoleneKearse)
+
+- Rough Sketch: https://excalidraw.com/#json=jxTLV8Jnf0G45iMDcRRYu,i5uVK75gG2UmX6Xb-8dB1g
+- 
