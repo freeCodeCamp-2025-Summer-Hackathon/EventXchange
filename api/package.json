@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "node --watch app.js"
+    "dev": "node --watch src/app.js"
   },
   "keywords": [],
   "author": "",
@@ -13,7 +13,8 @@
   "dependencies": {
     "dotenv": "^17.0.1",
     "express": "^5.1.0",
-    "mongodb": "^6.17.0"
+    "mongodb": "^6.17.0",
+    "mongoose": "^8.16.2"
   },
   "devDependencies": {
     "@eslint/css": "^0.9.0",
