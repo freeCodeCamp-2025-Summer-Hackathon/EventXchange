@@ -1,14 +1,23 @@
-// filepath: /D:/Work2/orange-bytes/orange-bytes/src/services/authService.js
-import api from '../api/index';
+import api from '../api';
 
 export const authService = {
   register: async (userData) => {
-    try {
-      const response = await api.post('/users/register', userData);
-      return response.data;
-    } catch (error) {
-      throw error.response.data;
-    }
+    const response = await api.post('/users', userData);
+    return response.data;
   },
-  // Add more auth-related methods here
+
+  login: async (credentials) => {
+    const response = await api.get('/users', {
+      params: {
+        email: credentials.email,
+        password: credentials.password
+      }
+    });
+    return response.data[0];
+  },
+
+  getUser: async (id) => {
+    const response = await api.get(`/users/${id}`);
+    return response.data;
+  }
 };
