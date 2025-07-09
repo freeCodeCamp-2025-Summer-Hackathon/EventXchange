@@ -1,4 +1,4 @@
-import { Schema, model } from 'mongoose';
+import {Schema, model} from 'mongoose';
 import bcrypt from 'bcrypt';
 
 /**
@@ -37,13 +37,13 @@ const UserModel = model('User', userSchema);
  * @returns {Promise<User|null>}
  */
 export async function createUser(name, username, password) {
-  const user = await UserModel.findOne({ username }).lean().exec();
+  const user = await UserModel.findOne({username}).lean().exec();
   if (user != null) {
-    return null;
+    throw new Error(`A user with the username "${username}" already exists.`);
   }
 
   const passhash = await hashPassword(password);
-  const newUser = new UserModel({ name, username, passhash });
+  const newUser = new UserModel({name, username, passhash});
   await newUser.save();
 
   return {
