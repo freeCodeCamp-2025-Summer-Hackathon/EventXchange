@@ -1,5 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Chocolate+Classical+Sans&display=swap');
 @import "tailwindcss";
 
 @theme {
+  /* Fonts */
+  --font-chocoSans: "Chocolate Classical Sans", static;
+
+  /* Colours */
   /* --color- */
+}
+
+p, li {
+  font-family: "Chocolate Classical Sans", static;
 }
