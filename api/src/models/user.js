@@ -4,8 +4,16 @@ import bcrypt from 'bcrypt';
 /**
  * @typedef User
  * @type {object}
+ * @property {string} _id
  * @property {string} name
  * @property {string} username
+ * @property {string} passhash
+ */
+
+/**
+ * @typedef UserDTO
+ * @type {Only<User, 'name' | 'username'}
+ * @property {string} id
  */
 
 const saltRounds = 10;
@@ -34,7 +42,7 @@ const UserModel = model('User', userSchema);
  * @param {string} name
  * @param {string} username
  * @param {string} password
- * @returns {Promise<User|null>}
+ * @returns {Promise<UserDTO>}
  */
 export async function createUser(name, username, password) {
   const user = await UserModel.findOne({username}).lean().exec();
@@ -46,17 +54,27 @@ export async function createUser(name, username, password) {
   const newUser = new UserModel({name, username, passhash});
   await newUser.save();
 
-  return {
-    id: newUser._id,
-    name: newUser.name,
-    username: newUser.username,
-  };
+  return makeUserDTO(newUser);
 }
 
+/**
+ * Validates the provided credentials.
+ * @param {string} username
+ * @param {string} password
+ * @returns {Promise<UserDTO>}
+ */
 export async function loginUser(username, password) {
-  // TODO: Find the user by the username
-  // TODO: Verify the provided password
-  // TODO: Return the User
+  const user = await UserModel.findOne({username}).lean().exec();
+  if (user == null) {
+    throw new Error(`Invalid credentials`);
+  }
+
+  const isAuthed = await checkPassword(password, user.passhash);
+  if (!isAuthed) {
+    throw new Error(`Invalid credentials`);
+  }
+
+  return makeUserDTO(user);
 }
 
 /**
@@ -76,4 +94,17 @@ async function hashPassword(password) {
  */
 async function checkPassword(password, hash) {
   return await bcrypt.compare(password, hash);
+}
+
+/**
+ * Creates an object safe to send to the user.
+ * @param {User} user
+ * @returns {UserDTO}
+ */
+function makeUserDTO(user) {
+  return {
+    id: user._id.toString(),
+    name: user.name,
+    username: user.username,
+  };
 }
