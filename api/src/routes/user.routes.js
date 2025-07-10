@@ -4,7 +4,6 @@ import { createUser } from '../models/user';
 export const usersRouter = express.Router();
 
 usersRouter.post('/users', async (req, res) => {
-
   const { name, username, password } = req.body;
 
   if (typeof name !== 'string' || name.trim().length === 0) {
@@ -22,7 +21,9 @@ usersRouter.post('/users', async (req, res) => {
 
   const newUser = await createUser(name, username, password);
 
-  return newUser;
+  res.status(201).json(newUser);
 })
 
-
+// TODO: new /login route
+// TODO: use `loginUser`
+// TODO: respond to the browser
