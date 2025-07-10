@@ -1,8 +1,8 @@
 import 'dotenv/config';
 import express from 'express';
-import { dbConnect } from './models/db.js';
+import {dbConnect} from './models/db.js';
 import bodyParser from 'body-parser';
-import { usersRouter } from './routes/user.routes.js';
+import {usersRouter} from './routes/user.routes.js';
 
 try {
   await dbConnect();
