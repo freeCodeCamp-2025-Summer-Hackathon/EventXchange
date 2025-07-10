@@ -1,5 +1,5 @@
 import { express } from 'express';
-import { createUser } from '../models/user';
+import { createUser, loginUser } from '../models/user';
 
 export const usersRouter = express.Router();
 
@@ -24,6 +24,11 @@ usersRouter.post('/users', async (req, res) => {
   res.status(201).json(newUser);
 })
 
-// TODO: new /login route
-// TODO: use `loginUser`
-// TODO: respond to the browser
+
+usersRouter.get('login', async (req, res) => {
+  const { username, password } = req.body;
+
+  const user = await loginUser(username, password);
+
+  res.status(200).json(user);
+})
