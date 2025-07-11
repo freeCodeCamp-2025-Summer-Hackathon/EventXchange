@@ -31,6 +31,7 @@ usersRouter.get('/login', async (req, res) => {
   const {username, password} = req.body;
   try {
     const user = await loginUser(username, password);
+    req.session.user = user;
     res.status(200).json(user);
   } catch (error) {
     res.status(400).json({error: error.message});

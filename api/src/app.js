@@ -4,7 +4,6 @@ import express from 'express';
 import {dbConnect} from './models/db.js';
 import {usersRouter} from './routes/user.routes.js';
 import {setupSession} from './utils/setupSession.js';
-import session from 'express-session';
 
 const port = 3000;
 
@@ -21,8 +20,7 @@ const app = express();
 app.use(bodyParser.json());
 app.use(await setupSession());
 
-app.get('/', (req, res) => {
-  req.session.thing = 'TEST';
+app.get('/', (_req, res) => {
   res.send('Hello World!');
 });
 
