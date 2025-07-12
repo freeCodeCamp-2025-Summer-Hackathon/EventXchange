@@ -1,6 +1,7 @@
 import bodyParser from 'body-parser';
 import 'dotenv/config';
 import express from 'express';
+import {requiresAuth} from './middleware/requiresAuth.js';
 import {dbConnect} from './models/db.js';
 import {usersRouter} from './routes/user.routes.js';
 import {setupSession} from './utils/setupSession.js';
@@ -22,6 +23,9 @@ app.use(await setupSession());
 
 // !! Used for testing !!
 app.use(express.static('public'));
+app.get('/protected', requiresAuth, (req, res) => {
+  res.send('You are Authorized');
+});
 
 // Add the routes
 app.use('/api/v1', usersRouter);

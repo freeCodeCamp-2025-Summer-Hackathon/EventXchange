@@ -18,7 +18,12 @@ export function requiresAuth(req, res, next) {
  * @returns {boolean}
  */
 function userAuthed(sessionData) {
-  if (sessionData == null || typeof sessionData.name !== 'string') {
+  if (
+    sessionData?.user == null ||
+    typeof sessionData.user.id !== 'string' ||
+    typeof sessionData.user.name !== 'string' ||
+    typeof sessionData.user.username !== 'string'
+  ) {
     return false;
   }
   return true;
