@@ -20,9 +20,8 @@ const app = express();
 app.use(bodyParser.json());
 app.use(await setupSession());
 
-app.get('/', (_req, res) => {
-  res.send('Hello World!');
-});
+// !! Used for testing !!
+app.use(express.static('public'));
 
 // Add the routes
 app.use('/api/v1', usersRouter);

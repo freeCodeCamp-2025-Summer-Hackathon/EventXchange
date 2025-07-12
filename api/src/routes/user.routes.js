@@ -27,7 +27,7 @@ usersRouter.post('/users', async (req, res) => {
   }
 });
 
-usersRouter.get('/login', async (req, res) => {
+usersRouter.post('/login', async (req, res) => {
   const {username, password} = req.body;
   try {
     const user = await loginUser(username, password);
