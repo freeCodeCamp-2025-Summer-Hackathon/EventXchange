@@ -7,7 +7,7 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className='sticky top-0 w-full bg-blue-400 text-black h-[8rem] z-50'>
+      <nav className='sticky top-0 w-full bg-blue-400 text-black h-[6rem] z-50'>
         <div className='flex items-center h-full w-full mx-auto px-5'>
           {/* LEFT */} 
           <div className="ml-[3rem]">
@@ -26,6 +26,7 @@ const Navbar = () => {
               <li className="transition-transform duration-50 hover:scale-102"><Link to="/dashboard">Dashboard</Link></li>
               <li className="transition-transform duration-50 hover:scale-102"><Link to="/events">Events</Link></li>
               <li className="transition-transform duration-50 hover:scale-102"><Link to="/calender">Calender</Link></li>
+              <li className="transition-transform duration-50 hover:scale-102"><Link to="/login">Login</Link></li>
             </ul>
             <div>
 
