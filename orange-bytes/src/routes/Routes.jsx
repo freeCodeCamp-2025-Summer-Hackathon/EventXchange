@@ -5,6 +5,7 @@ import React from "react";
 import Login from "../pages/Login";
 import Signup from "../pages/Signup";
 import Landing from "../pages/Landing";
+import Events from "../pages/Events";
 
 export const router = createBrowserRouter([
   {
@@ -12,8 +13,9 @@ export const router = createBrowserRouter([
     element: <App />,
     children: [
       {path: "", element: <Landing />},
-      { path: "login", element: <Login /> },
-      { path: "signup", element: <Signup /> },
+      {path: "login", element: <Login /> },
+      {path: "signup", element: <Signup /> },
+      {path: "events", element: <Events /> },
       // {path: "*", element: <PageNotFound />},
     ]
   }

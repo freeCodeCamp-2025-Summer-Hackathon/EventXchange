@@ -9,7 +9,7 @@ const Hero = () => {
     };
 
     return (
-        <section className="bg-gradient-to-b from-blue-50 to-white py-20 px-6 text-center">
+        <section className="bg-gradient-to-b from-blue-50 to-white py-20 px-6 text-center mb-[-3rem]">
             <div className="max-w-4xl mx-auto">
                 <h1 className="text-4xl md:text-6xl font-bold text-gray-800 mb-6">
                     Welcome to EventXchange
