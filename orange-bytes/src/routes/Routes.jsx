@@ -6,6 +6,7 @@ import Login from "../pages/Login";
 import Signup from "../pages/Signup";
 import Landing from "../pages/Landing";
 import Events from "../pages/Events";
+import About from "../pages/About";
 
 export const router = createBrowserRouter([
   {
@@ -16,6 +17,7 @@ export const router = createBrowserRouter([
       {path: "login", element: <Login /> },
       {path: "signup", element: <Signup /> },
       {path: "events", element: <Events /> },
+      {path: "about", element: <About /> },
       // {path: "*", element: <PageNotFound />},
     ]
   }

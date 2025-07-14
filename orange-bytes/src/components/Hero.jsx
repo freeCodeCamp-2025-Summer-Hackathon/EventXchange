@@ -5,7 +5,7 @@ const Hero = () => {
     };
 
     const handleLearnMore = () => {
-        window.location.href = "/about"; // Assuming you have an about page
+        window.location.href = "/about";
     };
 
     return (
@@ -19,13 +19,13 @@ const Hero = () => {
                 </p>
                 <div className="flex justify-center gap-4">
                     <button
-                        className="bg-blue-600 text-white px-6 py-3 rounded-lg text-lg hover:bg-blue-700 transition"
+                        className="bg-blue-600 text-white px-6 py-3 rounded-lg text-lg hover:bg-blue-700 transition cursor-pointer"
                         onClick={handleGetStarted}
                     >
                         Get Started
                     </button>
                     <button 
-                        className="border border-gray-400 px-6 py-3 rounded-lg text-lg hover:bg-gray-100 transition" 
+                        className="border border-gray-400 px-6 py-3 rounded-lg text-lg hover:bg-gray-100 transition cursor-pointer" 
                         onClick={handleLearnMore}
                     >
                         Learn More
