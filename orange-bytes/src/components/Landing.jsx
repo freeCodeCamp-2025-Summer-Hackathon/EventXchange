@@ -1,5 +1,5 @@
-import Hero from "../components/Hero";
-import FeatureCard from "../components/FeatureCard";
+import Hero from "./Hero";
+import FeatureCard from "./FeatureCard";
 
 const Landing = () => {
     return (

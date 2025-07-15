@@ -1,7 +1,9 @@
+import Landing from "../components/Landing";
+
 const Dashboard = () => {
   return (
     <>
-
+      <Landing />
     </>
   )
 };
