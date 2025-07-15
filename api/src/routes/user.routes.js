@@ -37,3 +37,10 @@ usersRouter.post('/login', async (req, res) => {
     res.status(400).json({error: error.message});
   }
 });
+
+usersRouter.delete('/login', async (req, res) => {
+  if (req.session?.user != null) {
+    delete req.session.user;
+  }
+  res.status(200).json({});
+});
