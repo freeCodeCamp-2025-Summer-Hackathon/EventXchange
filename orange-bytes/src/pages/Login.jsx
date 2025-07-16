@@ -38,13 +38,13 @@ const Login = () => {
                 <h2 className="text-2xl font-bold mb-6 text-center">Login</h2>
                 <form className="space-y-4" onSubmit={(event) => handleLogin(event)}>
                     <div className="mb-4">
-                        <label className="block text-sm font-medium mb-2" htmlFor="email">
-                            Email
+                        <label className="block text-sm font-medium mb-2" htmlFor="username">
+                            Username
                         </label>
                         <input
                             className="border border-gray-300 p-2 w-full rounded"
-                            type="email"
-                            id="email"
+                            type="text"
+                            id="username"
                             required
                             value={username}
                             onInput={(event) => handleInput(setUsername, event)}
