@@ -13,22 +13,22 @@ const Login = () => {
     const handleLogin = async (event) => {
         event.preventDefault();
         if (!password || !username) return;
-        const u = fetch('http://localhost:3000/api/v1/login', {
+        const data = await fetch('http://localhost:3000/api/v1/login', {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({username, password})
-        })
+        }).then((r) => r.json())
 
-        if (u) {
-            setUser(u)
+        if (data.user) {
+            setUser(data)
             // TODO: use a router parameter to determine where to redirect to
             // while using "/" as a fallback or default.
             redirect("/")
         } else {
             // TODO: an error happened so we should tell the user
-            alert('Invalid credentials. Try again.')
+            alert(`ERROR: ${data.error}`)
         }
     };
 
