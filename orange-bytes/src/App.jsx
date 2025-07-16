@@ -1,10 +1,12 @@
-import Navbar from './components/Navbar'
-import { Outlet } from 'react-router-dom'
-import ScrollToTop from './components/ScrollToTop'
-import { useEffect } from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { createContext, useEffect, useState } from 'react';
+import { Outlet, useLocation, useNavigate } from 'react-router-dom';
+import Navbar from './components/Navbar';
+import ScrollToTop from './components/ScrollToTop';
+
+export const UserContext = createContext()
 
 const App = () => {
+  const [user, setUser] = useState();
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -18,13 +20,15 @@ const App = () => {
   }, [navigate, location]);
 
   return (
-    <div className="flex flex-col min-h-screen">
-      <Navbar/>
-      <ScrollToTop />
-      <main className="flex-grow">
-        <Outlet />
-      </main>
-    </div>
+    <UserContext.Provider value={[user, setUser]}>
+      <div className="flex flex-col min-h-screen">
+        <Navbar/>
+        <ScrollToTop />
+        <main className="flex-grow">
+          <Outlet />
+        </main>
+      </div>
+    </UserContext.Provider>
   )
 }
 
