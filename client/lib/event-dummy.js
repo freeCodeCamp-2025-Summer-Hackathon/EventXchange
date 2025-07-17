@@ -39,4 +39,14 @@
         attendees: ["john123", "jack879", "jesse1011"],
         tags: ["family", "all-ages", "hands-on"]
     },
+    {
+        id: 5,
+        title: "Culinary Cultural Exchange",
+        desc: "Bring your best dishes unique to your culture and share with the community!",
+        start: ["05/13/2025", "11:00 AM"],
+        location: "New Orleans",
+        organizer: "jack879",
+        attendees: ["john123", "jane456", "jesse1011"],
+        tags: ["all-ages", "food", "cozy", "culinary"]
+    },
 ]
