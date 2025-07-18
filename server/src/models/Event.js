@@ -16,44 +16,49 @@ import {model, Schema} from mongoose;
  * @property {string[]} tags
  */
 
-const eventSchema = new Schema({
-  title: {
-    type: String,
-    required: true,
+const eventSchema = new Schema(
+  {
+    title: {
+      type: String,
+      required: true,
+    },
+    description: {
+      type: String,
+      required: true,
+    },
+    media: {
+      type: [String],
+      required: true,
+    },
+    createdAt: {
+      type: Date,
+      required: true,
+      immutable: true,
+    },
+    start_date: {
+      type: Date,
+      required: true,
+    },
+    location: {
+      type: String,
+      required: true,
+    },
+    organizer: {
+      type: Schema.Types.ObjectId,
+      ref: 'User',
+    },
+    attendees: [{
+      type: Schema.Types.ObjectId,
+      ref: 'User',
+    }],
+    tags: {
+      type: [String],
+    }
   },
-  description: {
-    type: String,
-    required: true,
-  },
-  media: {
-    type: [String],
-    required: true,
-  },
-  createdAt: {
-    type: Date,
-    required: true,
-    immutable: true,
-  },
-  start_date: {
-    type: Date,
-    required: true,
-  },
-  location: {
-    type: String,
-    required: true,
-  },
-  organizer: {
-    type: Schema.Types.ObjectId,
-    ref: 'User',
-  },
-  attendees: [{
-    type: Schema.Types.ObjectId,
-    ref: 'User',
-  }],
-  tags: {
-    type: [String],
+  {
+    timestamps: true,
   }
-});
+);
 
 const EventModel = model('Event', eventSchema);
 
