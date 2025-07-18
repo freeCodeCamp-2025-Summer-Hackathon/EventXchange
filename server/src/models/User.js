@@ -1,4 +1,3 @@
-import bcrypt from 'bcrypt';
 import {model, Schema} from 'mongoose';
 
 /**

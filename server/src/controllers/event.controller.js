@@ -44,6 +44,11 @@ const createEvent = async (req, res) => {
   }
 };
 
+// Deleters
+
+// DELETE /events/:id
+const deleteEvent = async (req, res)
+
 
 
 // Export handlers
