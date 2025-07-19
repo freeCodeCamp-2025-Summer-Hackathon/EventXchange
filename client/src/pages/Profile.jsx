@@ -1,3 +1,5 @@
+import userDummy from "/lib/user-dummy.js"
+
 const Profile = () => {
   return (
     <>
