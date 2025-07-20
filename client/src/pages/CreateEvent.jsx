@@ -2,7 +2,7 @@ import { useState } from "react";
 import { FaPlus, FaImage } from "react-icons/fa";
 
 const CreateEvent = () => {
-  const [image, setImage] = useState(null);
+  const [setImage] = useState(null);
   const [imagePreview, setImagePreview] = useState(null);
 
   const handleImageChange = (e) => {
