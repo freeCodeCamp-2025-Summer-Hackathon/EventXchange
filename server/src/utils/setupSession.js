@@ -19,8 +19,10 @@ export async function setupSession() {
 
   return session({
     secret: [process.env.SESSION_SECRET, process.env.SESSION_SECRET_OLD],
-    saveUninitialized: true,
-    resave: true,
+    saveUninitialized: false,
+    resave: false,
     store,
+    secure: false,
+    sameSite: 'lax',
   });
 }

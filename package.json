@@ -1,0 +1,24 @@
+{
+  "name": "orange-bytes",
+  "version": "1.0.0",
+  "description": "- BrettK (Brett Kinnamon) - _breee (Brecon N) - Sage (Khalil A) - LittleInksmith (Zaynab JC) - Keith (Keith Miquela) - dfdx2 (D Davis) - robynbee (Robyn B) - [Tailsmonster (Nico Aroca)](https://github.com/tailsmonster)",
+  "main": "index.js",
+  "scripts": {
+    "dev": "concurrently 'npm run dev --prefix client' 'npm run dev --prefix server'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/freeCodeCamp-2025-Summer-Hackathon/orange-bytes.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/freeCodeCamp-2025-Summer-Hackathon/orange-bytes/issues"
+  },
+  "homepage": "https://github.com/freeCodeCamp-2025-Summer-Hackathon/orange-bytes#readme",
+  "devDependencies": {
+    "concurrently": "^9.2.0"
+  }
+}
