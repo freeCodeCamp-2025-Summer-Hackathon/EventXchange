@@ -1,11 +1,3 @@
-// CREATE EVENTS FORM GOES HERE
-// 1. add in input attributes (value, id, required or not, className, placeholder, etc.) - DONE
-// 2. style 'em nicely according to wireframe! - DONE
-// 3. add functionality w/ dummy data (use a setter function so user can see what they're typing live, push data to dummy events as an obj)
-
-import eventDummy from "/lib/event-dummy.js"
-import userDummy from "/lib/user-dummy.js"
-
 const CreateEvent = () => {
   return (
     <>
@@ -16,7 +8,7 @@ const CreateEvent = () => {
             <label for="event-title" className="text-base font-medium mb-2">Event Title</label>
             <input 
               type="text" 
-              id="event-title" 
+              id="event-title"
               required
               className="border border-gray-300 p-2 w-full rounded bg-gray-100"
             />
@@ -25,7 +17,7 @@ const CreateEvent = () => {
           <div className="flex flex-col">
             <span className="text-base font-medium mb-2">Event Host(s)</span>
             <div className="flex flex-row gap-5">
-              <div className="text-base font-normal mb-2 flex flex-row justify-between grow-1 border border-gray-300 p-2 w-full rounded bg-gray-100 min-h-[40px] max-w-lg"></div>
+              <div className="text-base font-normal mb-2 flex flex-row justify-between border border-gray-300 p-2 w-full rounded bg-gray-100 min-h-[40px] max-w-lg"></div>
               <span className="text-3xl inline cursor-pointer">+</span>
             </div>
           </div>
@@ -35,7 +27,6 @@ const CreateEvent = () => {
             <input 
               type="file"
               id="photo-upload"
-              placeholder=""
               className="file:hidden border border-gray-300 p-2 w-full rounded bg-gray-100"
               />
           </div>
@@ -48,7 +39,7 @@ const CreateEvent = () => {
           <div className="flex flex-col">
             <span className="text-base font-medium mb-2">Tags (Optional)</span>
             <div className="flex flex-row gap-5">
-              <div className="text-base font-normal mb-2 flex flex-row justify-between grow-1 border border-gray-300 p-2 w-full rounded bg-gray-100 min-h-[40px] max-w-lg"></div>
+              <div className="text-base font-normal mb-2 flex flex-row justify-between border border-gray-300 p-2 w-full rounded bg-gray-100 min-h-[40px] max-w-lg"></div>
               <span className="text-3xl inline cursor-pointer">+</span>
             </div>
           </div>
@@ -78,7 +69,6 @@ const CreateEvent = () => {
               </div>  
             </div>
           </div>
-          
           
           <div className="flex flex-col">
             <label for="event-location" className="text-base font-medium mb-2">Location</label>
