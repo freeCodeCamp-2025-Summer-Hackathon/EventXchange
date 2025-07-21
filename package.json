@@ -4,7 +4,8 @@
   "description": "- BrettK (Brett Kinnamon) - _breee (Brecon N) - Sage (Khalil A) - LittleInksmith (Zaynab JC) - Keith (Keith Miquela) - dfdx2 (D Davis) - robynbee (Robyn B) - [Tailsmonster (Nico Aroca)](https://github.com/tailsmonster)",
   "main": "index.js",
   "scripts": {
-    "dev": "concurrently 'npm run dev --prefix client' 'npm run dev --prefix server'"
+    "dev": "concurrently 'npm run dev --prefix client' 'npm run dev --prefix server'",
+    "deps": "concurrently 'npm install --prefix client' 'npm run install --prefix server'"
   },
   "repository": {
     "type": "git",
