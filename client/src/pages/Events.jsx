@@ -1,25 +1,39 @@
 import EventCard from "../components/EventCard";
-import EventDesc from "../components/EventDesc";
+import eventDummy from "../../lib/event-dummy.js";
+import Carousel from 'react-multi-carousel';
+import 'react-multi-carousel/lib/styles.css';
 
 const Events = () => {
-    const tempEvents = [
-        { id: 1, title: "Event 1", description: "Description for Event 1", date: "2023-10-01T10:00:00Z", location: "New York", attendees: 100 },
-        { id: 2, title: "Event 2", description: "Description for Event 2", date: "2023-10-02T12:00:00Z", location: "Los Angeles", attendees: 200 },
-        { id: 3, title: "Event 3", description: "Description for Event 3", date: "2023-10-03T14:00:00Z", location: "Chicago", attendees: 300 },
-    ];
+    const tempEvents = [...eventDummy].sort((a, b) => new Date(a.start) - new Date(b.start));
 
     return (
-        <div className="p-4 w-full max-w-8xl mx-auto overflow-hidden">
-            <h1 className="text-4xl font-bold mb-2 text-center">Upcoming Events</h1>
-            <div className="mb-4 flex items-center">
-                <div className="flex flex-col gap-4 w-1/2 p-4">
+        <div className="p-4 w-full max-w-8xl mx-auto overflow-x-auto">
+            <h1 className="text-4xl font-bold text-center">Upcoming Events</h1>
+            <div className="mb-4 overflow-x-auto">
+                <Carousel
+                    responsive={{
+                        superLargeDesktop: {
+                            breakpoint: { max: 4000, min: 3000 },
+                            items: 5
+                        },
+                        desktop: {
+                            breakpoint: { max: 3000, min: 1024 },
+                            items: 3
+                        },
+                        tablet: {
+                            breakpoint: { max: 1024, min: 464 },
+                            items: 2
+                        },
+                        mobile: {
+                            breakpoint: { max: 464, min: 0 },
+                            items: 1
+                        }
+                    }}
+                >
                     {tempEvents.map((event) => (
-                        <EventCard key={event.id} event={event} />
+                        <EventCard key={event.id} event={event}/>
                     ))}
-                </div>
-                <div className="mb-4 w-1/2 p-4-auto h-[calc(100vh-15rem)] ">
-                    <EventDesc event={tempEvents[0]} />
-                </div>
+                </Carousel>
             </div>
         </div>
     );

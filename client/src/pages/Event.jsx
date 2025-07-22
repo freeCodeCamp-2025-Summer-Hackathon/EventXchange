@@ -1,6 +1,5 @@
 import { Link, useParams } from "react-router-dom";
 import EventCard from "../components/EventCard";
-import EventDesc from "../components/EventDesc";
 import { useEffect, useState } from "react";
 import eventDummy from "../../lib/event-dummy.js";
 import eventImage from "../assets/eventImage.jpg";
