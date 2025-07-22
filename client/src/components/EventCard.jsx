@@ -1,6 +1,5 @@
 import eventImage from "../assets/eventImage.jpg";
 import defaultProfilePic from "../assets/default-pfp.png";
-import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 const EventCard = ({ event }) => {
@@ -29,7 +28,7 @@ const EventCard = ({ event }) => {
               />
               <span className="text-gray-800 font-semibold">{event.organizer}</span>
             </div>
-            <span className="text-gray-600">{new Date(event.start).toLocaleDateString()}</span>
+            <span className="text-gray-600">{new Date(event.start[0]).toLocaleDateString()}</span>
           </div>
         </div>
       </div>

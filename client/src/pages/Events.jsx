@@ -4,7 +4,9 @@ import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 
 const Events = () => {
-    const tempEvents = [...eventDummy].sort((a, b) => new Date(a.start) - new Date(b.start));
+    const tempEvents = [...eventDummy].sort(
+        (a, b) => new Date(`${a.start[0]} ${a.start[1]}`) - new Date(`${b.start[0]} ${b.start[1]}`)
+    );
 
     return (
         <div className="p-4 w-full max-w-8xl mx-auto overflow-x-auto">
