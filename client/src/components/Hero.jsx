@@ -1,3 +1,6 @@
+
+import { Link } from "react-router-dom";
+
 const Hero = () => {
 
     const handleGetStarted = () => {
@@ -20,15 +23,16 @@ const Hero = () => {
                 <div className="flex justify-center gap-4">
                     <button
                         className="bg-blue-600 text-white px-6 py-3 rounded-lg text-lg hover:bg-blue-700 transition cursor-pointer"
-                        onClick={handleGetStarted}
+                        // onClick={handleGetStarted}
                     >
-                        Get Started
+                        <Link to="/signup">Get Started</Link>
+
                     </button>
                     <button 
                         className="border border-gray-400 px-6 py-3 rounded-lg text-lg hover:bg-gray-100 transition cursor-pointer" 
-                        onClick={handleLearnMore}
+                        // onClick={handleLearnMore}
                     >
-                        Learn More
+                        <Link to="/about">Learn More</Link>
                     </button>
                 </div>
             </div>
