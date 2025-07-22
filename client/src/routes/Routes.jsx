@@ -6,6 +6,7 @@ import App from "../App";
 import Dashboard from "../pages/Dashboard";
 import Login from "../pages/Login";
 import Signup from "../pages/Signup";
+import Logout from "../pages/Logout";
 import Profile from "../pages/Profile";
 import Settings from "../pages/Settings";
 import Notifications from "../pages/Notifications";
@@ -25,6 +26,7 @@ export const router = createBrowserRouter([
       { path: "", element: <Dashboard /> },
       { path: "login", element: <Login /> },
       { path: "signup", element: <Signup /> },
+      { path: "logout", element: <Logout /> },
       { path: "users/:userid", element: <Profile /> },
       { path: "settings", element: <Settings /> },
       { path: "notifications", element: <Notifications /> },

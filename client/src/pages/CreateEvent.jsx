@@ -1,4 +1,24 @@
+import { useState } from "react";
+import { FaPlus, FaImage } from "react-icons/fa";
+
 const CreateEvent = () => {
+  const [images, setImages] = useState(null);
+  const [imagePreview, setImagePreview] = useState(null);
+
+  const handleImageChange = (e) => {
+    const files = e.target.files;
+    if (files) {
+      setImages(files);
+      setImagePreview(() => {
+        let urls = [];
+        for (let i = 0; i < files.length; i++) {
+          urls.push(URL.createObjectURL(files[i]));
+        }
+        return urls;
+      });
+    }
+  };
+
   return (
     <>
     <div className="bg-gray-100 flex flex-col justify-center items-center">
@@ -9,27 +29,53 @@ const CreateEvent = () => {
             <input 
               type="text" 
               id="event-title"
+              placeholder="Enter event title"
               required
-              className="border border-gray-300 p-2 w-full rounded bg-gray-100"
+              className="border border-gray-300 p-2 w-full rounded bg-gray-100 placeholder-gray-600"
             />
           </div>
 
           <div className="flex flex-col">
-            <span className="text-base font-medium mb-2">Event Host(s)</span>
-            <div className="flex flex-row gap-5">
-              <div className="text-base font-normal mb-2 flex flex-row justify-between border border-gray-300 p-2 w-full rounded bg-gray-100 min-h-[40px] max-w-lg"></div>
-              <span className="text-3xl inline cursor-pointer">+</span>
+            <label className="block font-medium mb-1">Event Host(s)</label>
+            <div className="flex items-center space-x-2">
+              <input
+                type="text"
+                className="flex-1 p-2 rounded text-base font-normal mb-2 border border-gray-300 w-full bg-gray-100 placeholder-gray-600"
+                placeholder="Enter host name"
+              />
+              <button type="button" className="p-2 rounded cursor-pointer">
+                <FaPlus />
+              </button>
             </div>
           </div>
 
-          <div className="flex flex-col">
-            <label for="photo-upload" className="text-base font-medium mb-2">Attach any photos</label>
-            <input 
-              type="file"
-              id="photo-upload"
-              className="file:hidden border border-gray-300 p-2 w-full rounded bg-gray-100"
-              />
-          </div>
+          <div>
+          <label className="block font-medium mb-1">Attach any Photos</label>
+          <input
+            id="photo-upload"
+            type="file"
+            accept="image/*"
+            onChange={handleImageChange}
+            className="hidden"
+            multiple
+          />
+          <label
+            htmlFor="photo-upload"
+            className="bg-gray-200 h-40 flex flex-wrap rounded cursor-pointer overflow-y-auto"
+          >
+            {imagePreview ? (
+              imagePreview.map((image) => <img
+                src={image}
+                alt="Preview"
+                className="w-xs grow shrink border-solid border-blue-400 border-2 rounded-xs"
+                />)
+            )
+            : (
+              <FaImage className="text-6xl text-gray-500 m-auto" />
+              )
+            }
+          </label>
+        </div>
         
           <div className="flex flex-col">
             <label for="description" className="text-base font-medium mb-2">Description</label>
@@ -37,10 +83,16 @@ const CreateEvent = () => {
           </div>
 
           <div className="flex flex-col">
-            <span className="text-base font-medium mb-2">Tags (Optional)</span>
-            <div className="flex flex-row gap-5">
-              <div className="text-base font-normal mb-2 flex flex-row justify-between border border-gray-300 p-2 w-full rounded bg-gray-100 min-h-[40px] max-w-lg"></div>
-              <span className="text-3xl inline cursor-pointer">+</span>
+            <label className="block font-medium mb-1">Tags (optional)</label>
+            <div className="flex items-center space-x-2">
+              <input
+                type="text"
+                className="flex-1 p-2 rounded text-base font-normal mb-2 border border-gray-300 w-full bg-gray-100 placeholder-gray-600"
+                placeholder="Enter tags"
+              />
+              <button type="button" className="p-2 rounded cursor-pointer">
+                <FaPlus />
+              </button>
             </div>
           </div>
         
