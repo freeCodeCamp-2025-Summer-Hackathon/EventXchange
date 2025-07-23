@@ -23,7 +23,7 @@ function Profile(){
                     <h2 class="text-2xl">Events Held:</h2>
                     <div className="flex flex-row flex-wrap justify-evenly mt-5">
                         {eventDummy.map((item) => (
-                            <div class="bg-white p-15 text-center max-w-[25vw] min-h-[40vh] shadow-md rounded-lg p-4 m-5 grow-1" key={item.id}>
+                            <div class="bg-white p-15 text-center w-[25vw] min-h-[40vh] shadow-md rounded-lg p-4 m-5" key={item.id}>
                                 <FaImage className="text-6xl text-gray-500 m-auto"/>
                                 <h3 className="text-lg">{item.title}</h3>
                                 <p>{item.start[0]}</p>
