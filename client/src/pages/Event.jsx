@@ -12,14 +12,11 @@ const Event = () => {
     const id = params.eventid;
     const response = await api("GET", `/events/${id}`)
     if (response == null) {
-      console.log(response)
       setError("Something went wrong.")
     } else if (response.error) {
-      console.log(response)
       setError(response.error)
       setEvent();
     } else {
-      console.log(response)
       setError();
       setEvent(response);
     }
