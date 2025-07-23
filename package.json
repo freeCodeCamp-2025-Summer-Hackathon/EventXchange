@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "dev": "concurrently 'npm run dev --prefix client' 'npm run dev --prefix server'",
-    "deps": "concurrently 'npm install --prefix client' 'npm install --prefix server'"
+    "deps": "concurrently 'npm install --prefix client' 'npm install --prefix server'",
+    "seed": "npm run seed --prefix server"
   },
   "repository": {
     "type": "git",
