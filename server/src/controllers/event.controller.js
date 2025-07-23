@@ -1,81 +1,65 @@
-import EventModel from "../models/Event";
-
-const Event = EventModel;
+import EventModel from '../models/Event.js';
 
 // Getters
 
 // GET /events
-const getAllEvents = async (req, res) => {
+export async function getAllEvents() {
   try {
-    const events = await Event.find({}).sort({ createdAt: -1} );
-    res.status(200).json(events);
+    return await EventModel.find({}).sort({createdAt: -1});
   } catch (error) {
-    console.error("Error in getAllEvents controller", error);
-    res.status(500).json({ message: error.message });
+    console.error('Error in getAllEvents controller', error);
+    throw new Error('Could not retrieve events.');
   }
 }
 
 // GET /events/:id
-const getEventById = async (req, res) => {
+export async function getEventById(id) {
   try {
-    const event = await Event.findById(req.params.id);
-    if (!event) 
-      return res.status(404).json({ message: "Event not found!"});
-    res.status(200).json(event);
+    const event = await EventModel.findById(id);
+    if (!event) throw new Error('Event not found!');
+    return event;
   } catch (error) {
-    console.error("Error in getEventById controller", error);
-    res.status(500).json({ message: error.message });
+    console.error('Error in getEventById controller', error);
+    throw error; // Re-throw the original error
   }
-};
+}
 
 // POST /events
-const createEvent = async (req, res) => {
+export async function createEvent(eventData) {
   try {
-    const newEvent = new Event({
-      ...req.body,
-      createdAt: new Date(),
-    });
+    // Validation should be added here or in a middleware
+    const newEvent = new EventModel(eventData);
     const savedEvent = await newEvent.save();
-    res.status(200).json(savedEvent);
+    return savedEvent;
   } catch (error) {
-    console.error("Error in createEvent:", error);
-    res.status(400).json({ message: error.message });
+    console.error('Error in createEvent:', error);
+    throw new Error(error.message);
   }
-};
+}
 
 // UPDATE /events/:id
-const updateEvent = async (req, res) => {
+export async function updateEvent(id, eventData) {
   try {
-    const event = await Event.findById(req.params.id, req.body);
-    if (!event) 
-      return res.status(404).json({ message: "Event not found!"});
-    const updatedEvent = await Event.findById(id);
-    res.status(200).json(updatedEvent)
+    const updatedEvent = await EventModel.findByIdAndUpdate(id, eventData, {
+      new: true,
+      runValidators: true,
+    });
+    if (!updatedEvent) throw new Error('Event not found!');
+    return updatedEvent;
   } catch (error) {
-    res.status(500).json({message: error.message});
+    console.error('Error in updateEvent:', error);
+    throw new Error(error.message);
   }
 }
 
 // DELETE /events/:id
-const deleteEvent = async (req, res) => {
+export async function deleteEvent(id) {
   try {
-    const event = await Event.findById(req.params.id, req.body);
-    if (!event) 
-      return res.status(404).json({ message: "Event not found!"});
-    await Event.findByIdAndDelete(id);
-    res.status(200).json({message:`${event.title} deleted successfully`});
+    const event = await EventModel.findByIdAndDelete(id);
+    if (!event) throw new Error('Event not found!');
+    return {message: `${event.title} deleted successfully`};
   } catch (error) {
-    res.status(500).json({message: error.message});
+    console.error('Error in deleteEvent:', error);
+    throw new Error(error.message);
   }
-}
-
-
-
-// Export handlers
-export {
-  getAllEvents,
-  getEventById,
-  createEvent,
-  updateEvent,
-  deleteEvent
 }
