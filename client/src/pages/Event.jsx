@@ -6,6 +6,7 @@ import eventDummy from "../../lib/event-dummy.js";
 import eventImage from "../assets/eventImage.jpg";
 
 const Event = () => {
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
   const params = useParams();
   const [event, setEvent] = useState();
 
@@ -56,6 +57,14 @@ const eventDummy = [
             {" "}
             {event?.desc}
           </p>
+          <div className="flex gap-4 mt-6">
+            <Link to={`/edit/${event?.id}`}>
+              <button className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Edit Event</button>
+            </Link>
+            <button 
+            onClick={() => setShowDeleteModal(true)} className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600"
+            >Delete Event</button>
+          </div>
         </div>
       </div>
       <div className="grid grid-cols-4 gap-30 p-10 center w-full">
@@ -76,6 +85,22 @@ const eventDummy = [
           <img src={eventImage} />
         </div>
       </div>
+      {showDeleteModal && (
+        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
+          <div className="bg-white p-6 rounded shadow-lg">
+            <p className="text-lg font-semibold mb-4">Are you sure you want to delete this event ?</p>
+            <div className="flex justify-end gap-3">
+              <button onClick={() => setShowDeleteModal(false)}
+              className="px-4 py-2 bg-gray-300 rounded">Cancel</button>
+              <button onClick={() => {
+                // TODO: Handle delete logic here
+                setShowDeleteModal(false);
+              }}
+              className="px-4 py-2 bg-red-500 text-white rounded">Confirm Delete</button>
+            </div>
+          </div>
+        </div>
+      )}
     </>
   );
 };
