@@ -11,7 +11,7 @@ function Profile(){
                 <div className="flex flex-row gap-10 justify-center w-3xl">
                     <img src={profilePic} alt="Profile Picture" className="inline-block rounded-full border-3 border-orange-500 w-30 h-30" />
                     
-                    <div class="border-l-3 border-blue-500 mw-[20vw] p-[15px]">
+                    <div className="border-l-3 border-blue-500 mw-[20vw] p-[15px]">
                         <p>Username: {userDummy[0].username}</p>
                         <p>Join Date: (mm/dd/yyyy)</p>
                         <p>User Rating: ?/10</p>
@@ -20,10 +20,10 @@ function Profile(){
                 </div>
                 
                 <div className="flex flex-col w-[80vw] mb-[10vh]">
-                    <h2 class="text-2xl">Events Held:</h2>
+                    <h2 className="text-2xl">Events Held:</h2>
                     <div className="flex flex-row flex-wrap justify-evenly mt-5">
                         {eventDummy.map((item) => (
-                            <div class="bg-white p-15 text-center w-[25vw] min-h-[40vh] shadow-md rounded-lg p-4 m-5" key={item.id}>
+                            <div className="bg-white p-15 text-center w-[25vw] min-h-[40vh] shadow-md rounded-lg p-4 m-5" key={item.id}>
                                 <FaImage className="text-6xl text-gray-500 m-auto"/>
                                 <h3 className="text-lg">{item.title}</h3>
                                 <p>{item.start[0]}</p>
