@@ -7,9 +7,9 @@ import {
   updateEvent,
 } from '../controllers/event.controller.js';
 
-const router = Router();
+export const eventsRouter = Router();
 
-router.post('/', async (req, res) => {
+eventsRouter.post('/', async (req, res) => {
   try {
     const newEvent = await createEvent(req.body);
     res.status(201).json(newEvent);
@@ -18,7 +18,7 @@ router.post('/', async (req, res) => {
   }
 });
 
-router.get('/', async (req, res) => {
+eventsRouter.get('/', async (req, res) => {
   try {
     const events = await getAllEvents();
     res.status(200).json(events);
@@ -27,7 +27,7 @@ router.get('/', async (req, res) => {
   }
 });
 
-router.get('/:id', async (req, res) => {
+eventsRouter.get('/:id', async (req, res) => {
   try {
     const event = await getEventById(req.params.id);
     res.status(200).json(event);
@@ -37,7 +37,7 @@ router.get('/:id', async (req, res) => {
   }
 });
 
-router.put('/:id', async (req, res) => {
+eventsRouter.put('/:id', async (req, res) => {
   try {
     const updated = await updateEvent(req.params.id, req.body);
     res.status(200).json(updated);
@@ -47,7 +47,7 @@ router.put('/:id', async (req, res) => {
   }
 });
 
-router.delete('/:id', async (req, res) => {
+eventsRouter.delete('/:id', async (req, res) => {
   try {
     const result = await deleteEvent(req.params.id);
     res.status(200).json(result);
@@ -56,5 +56,3 @@ router.delete('/:id', async (req, res) => {
     res.status(statusCode).json({error: error.message});
   }
 });
-
-export default router;

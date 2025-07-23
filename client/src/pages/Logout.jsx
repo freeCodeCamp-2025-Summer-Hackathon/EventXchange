@@ -11,14 +11,7 @@ const Logout = () => {
   }, [user]);
 
   const logout = async () => {
-    await fetch("http://localhost:3000/api/v1/login", {
-      method: "DELETE",
-      credentials: "include",
-      mode: "cors",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    }).then((r) => r.json());
+    await api("DELETE", '/login')
     setUser();
   };
 

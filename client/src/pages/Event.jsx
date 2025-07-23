@@ -1,35 +1,44 @@
-import { Link, useParams } from "react-router-dom";
-import EventCard from "../components/EventCard";
 import { useEffect, useState } from "react";
-import eventDummy from "../../lib/event-dummy.js";
+import { Link, useParams } from "react-router-dom";
 import eventImage from "../assets/eventImage.jpg";
+import { api } from "../helpers/api";
 
 const Event = () => {
   const params = useParams();
+  const [error, setError] = useState();
   const [event, setEvent] = useState();
 
+  const fetchEvent = async () => {
+    const id = params.eventid;
+    const response = await api("GET", `/events/${id}`)
+    if (response == null) {
+      setError("Something went wrong.")
+    } else if (response.error) {
+      setError(response.error)
+      setEvent();
+    } else {
+      setError();
+      setEvent(response);
+    }
+  }
+
   useEffect(() => {
-    const id = parseInt(params.eventid);
-    const eventData = eventDummy.find((e) => {
-      return e.id === id;
-    });
-    setEvent(eventData);
+    fetchEvent();
   }, [params.eventid]);
 
-  /*
-const eventDummy = [
-    {
-        id: 1,
-        title: "Grand Cake Bakefest",
-        desc: "Bake, eat, and chat all day with friends!",
-        start: ["08/17/2025", "10:00 AM"],
-        location: "Boston",
-        organizer: "john123",
-        attendees: ["jane456", "jack789", "jesse1011"],
-        tags: ["food", "culinary", "cozy", "patissier"]
-    },
-] 
-*/
+  if (error != null) {
+    return <>
+      <h1 className="text-4xl">ERROR</h1>
+      <pre>{error}</pre>
+      <Link to="/events" />
+    </>
+  }
+
+  if (event == null) {
+    return <>
+      <div className="text-2xl font-bold animate-pulse">Loading event data...</div>
+    </>
+  }
 
   return (
     <>
@@ -39,13 +48,13 @@ const eventDummy = [
         </div>
         <div>
           <h1 className="text-4xl text-orange-600 font-bold text-left mt-30">
-            {event?.title}
+            {event.title}
           </h1>
           <p className="font-(Chocolate-Classical-Sans) text-lg mt-10 mb-10">
-            Date and Time: {event?.start}
+            Date and Time: {event.start_date}
           </p>
           <p className="font-(Chocolate-Classical-Sans) text-lg">
-            Hosted By: {event?.organizer}
+            Hosted By: {event.organizer}
           </p>
           <p className="font-(Chocolate-Classical-Sans) text-lg mt-5">
             {" "}
@@ -53,26 +62,8 @@ const eventDummy = [
           </p>
           <p className="font-(Chocolate-Classical-Sans) text-lg">
             {" "}
-            {event?.desc}
+            {event.description}
           </p>
-        </div>
-      </div>
-      <div className="grid grid-cols-4 gap-30 p-10 center w-full">
-        <div>
-          <p className="text-center text-base">{eventDummy[0].title}</p>
-          <img src={eventImage} />
-        </div>
-        <div>
-          <p className="text-base text-center">{eventDummy[1].title}</p>
-          <img src={eventImage} />
-        </div>
-        <div>
-          <p className="text-base text-center">{eventDummy[2].title}</p>
-          <img src={eventImage} />
-        </div>
-        <div>
-          <p className="text-base text-center">{eventDummy[3].title}</p>
-          <img src={eventImage} />
         </div>
       </div>
     </>

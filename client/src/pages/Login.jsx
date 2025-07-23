@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { UserContext } from "../App.jsx";
-import { redirect, useNavigate } from "react-router-dom";
+import { api } from "../helpers/api";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -17,15 +18,7 @@ const Login = () => {
   const handleLogin = async (event) => {
     event.preventDefault();
     if (!password || !username) return;
-    const data = await fetch("http://localhost:3000/api/v1/login", {
-      method: "POST",
-      credentials: "include",
-      mode: "cors",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ username, password }),
-    }).then((r) => r.json());
+    const data = await api("POST", "/login", { username, password });
 
     if (data.id) {
       setUser(data);
