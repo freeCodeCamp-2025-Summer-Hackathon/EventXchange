@@ -3,6 +3,7 @@ import 'dotenv/config';
 import express from 'express';
 import {requiresAuth} from './middleware/requiresAuth.js';
 import {dbConnect} from './models/db.js';
+import {eventsRouter} from './routes/event.routes.js';
 import {usersRouter} from './routes/user.routes.js';
 import {setupSession} from './utils/setupSession.js';
 
@@ -35,6 +36,7 @@ app.get('/protected', requiresAuth, (req, res) => {
 
 // Add the routes
 app.use('/api/v1', usersRouter);
+app.use('/api/v1/events', requiresAuth, eventsRouter);
 
 // Run the server
 app.listen(port, () => {
