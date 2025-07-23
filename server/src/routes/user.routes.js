@@ -32,7 +32,6 @@ usersRouter.post('/login', async (req, res) => {
   const {username, password} = req.body;
   try {
     const user = await loginUser(username, password);
-    console.log(req.session.id);
     req.session.user = user;
     res.status(200).json(user);
   } catch (error) {
@@ -42,7 +41,6 @@ usersRouter.post('/login', async (req, res) => {
 
 usersRouter.delete('/login', async (req, res) => {
   try {
-    console.log(req.session.id);
     req.session.destroy();
     res.status(200).json({});
   } catch (error) {

@@ -138,7 +138,6 @@ dist
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
 
-# Other
-
-../.editorconfig
-.prettierrc.json
+# PLESE DO NOT IGNORE THESE FILES
+# ../.editorconfig
+# .prettierrc.json

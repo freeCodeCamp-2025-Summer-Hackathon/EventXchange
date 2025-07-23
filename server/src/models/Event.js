@@ -1,5 +1,4 @@
-import mongoose from "mongoose"
-import {model, Schema} from mongoose;
+import {model, Schema} from 'mongoose';
 
 /**
  * @typedef Event
@@ -47,17 +46,19 @@ const eventSchema = new Schema(
       type: Schema.Types.ObjectId,
       ref: 'User',
     },
-    attendees: [{
-      type: Schema.Types.ObjectId,
-      ref: 'User',
-    }],
+    attendees: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: 'User',
+      },
+    ],
     tags: {
       type: [String],
-    }
+    },
   },
   {
     timestamps: true,
-  }
+  },
 );
 
 const EventModel = model('Event', eventSchema);
