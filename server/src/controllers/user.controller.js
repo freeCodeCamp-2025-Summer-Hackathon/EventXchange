@@ -1,5 +1,22 @@
-import UserModel from '../models/User.js';
 import bcrypt from 'bcrypt';
+import UserModel from '../models/User.js';
+
+/**
+ * @typedef User
+ * @type {object}
+ * @property {string} _id
+ * @property {string} name
+ * @property {string} username
+ * @property {string} passhash
+ */
+
+/**
+ * @typedef UserDTO
+ * @type {Only<User, 'name' | 'username>'}
+ * @property {string} id
+ */
+
+const saltRounds = 10;
 
 /**
  * Creates a new user.
