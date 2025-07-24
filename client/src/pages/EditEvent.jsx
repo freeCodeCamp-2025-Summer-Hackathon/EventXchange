@@ -205,9 +205,7 @@ if(!eventData) return <p> Loading event ... </p>;
                   <div className="flex justify-center gap-4 mt-4">
                     <button
                       onClick={() => setShowDeleteModal(false)}
-                      className="px-4 py-2 rounded-md bg-gray-300 hover:bg-gray-400 transition"
-                    >
-                      Cancel
+                      className='px-4 py-2 rounded-md bg-gray-300 hover:bg-gray-400 transition'>Cancel
                     </button>
                     <button
                       className="px-4 py-2 rounded-md bg-red-900 text-white hover:bg-red-700 transition"
