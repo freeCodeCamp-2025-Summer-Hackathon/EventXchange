@@ -21,10 +21,10 @@ const Event = () => {
   /*
 const eventDummy = [
     {
-        id: "1",
+        id: 1,
         title: "Grand Cake Bakefest",
         desc: "Bake, eat, and chat all day with friends!",
-        start: ["2025-08-17", "10:00"],
+        start: ["08/17/2025", "10:00 AM"],
         location: "Boston",
         organizer: "john123",
         attendees: ["jane456", "jack789", "jesse1011"],
