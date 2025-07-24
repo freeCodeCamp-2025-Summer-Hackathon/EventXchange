@@ -1,7 +1,7 @@
 import { useParams, useNavigate } from "react-router-dom";
 import {useState, useEffect} from "react";
 import { FaPlus, FaImage, FaTrash } from "react-icons/fa";
-import events from "/Users/breconn/Desktop/EventXchange_bree/client/lib/event-dummy.js";
+import events from "client/lib/event-dummy.js";
 
 
 
