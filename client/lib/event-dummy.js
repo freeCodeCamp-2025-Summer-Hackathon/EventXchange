@@ -48,5 +48,24 @@ export default [
         organizer: "jack879",
         attendees: ["john123", "jane456", "jesse1011"],
         tags: ["all-ages", "food", "cozy", "culinary"]
+    },   {
+        id: 6,
+        title: "Tech Innovations Expo",
+        desc: "Explore the latest in technology and innovation with industry leaders!",
+        start: ["11/30/2025", "10:00 AM"],
+        location: "San Francisco",
+        organizer: "techguru",
+        attendees: ["john123", "jane456", "jack789"],
+        tags: ["technology", "innovation", "expo"]
     },
+    {
+        id: 7,
+        title: "Virtual Reality Gaming Night",
+        desc: "Join us for an immersive night of VR gaming with friends!",
+        start: ["12/15/2025", "7:00 PM"],
+        location: "Online",
+        organizer: "gamer123",
+        attendees: ["john123", "jane456", "jack789"],
+        tags: ["gaming", "virtual-reality", "online"]
+    }
 ]
