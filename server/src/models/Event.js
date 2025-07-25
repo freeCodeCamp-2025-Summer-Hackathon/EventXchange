@@ -25,16 +25,14 @@ const eventSchema = new Schema(
       type: String,
       required: true,
     },
-    media: {
+    photos: {
       type: [String],
-      required: true,
     },
-    createdAt: {
+    start: {
       type: Date,
       required: true,
-      immutable: true,
     },
-    start_date: {
+    end: {
       type: Date,
       required: true,
     },

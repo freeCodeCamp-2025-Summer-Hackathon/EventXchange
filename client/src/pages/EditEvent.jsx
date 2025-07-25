@@ -1,13 +1,13 @@
-import { useParams, useNavigate } from "react-router-dom";
-import {useState, useEffect} from "react";
-import { FaPlus, FaImage, FaTrash } from "react-icons/fa";
-import events from "client/lib/event-dummy.js";
+import { useEffect, useState } from "react";
+import { FaImage, FaPlus, FaTrash } from "react-icons/fa";
+import { useNavigate, useParams } from "react-router-dom";
+import events from "../../lib/event-dummy.js";
 
 
 
 
 const EditEvent = () => {
- 
+
   const {eventid} = useParams();
   const navigate = useNavigate();
 
@@ -34,7 +34,7 @@ const handleChange = (e) => {
   setEventData((prev) => ({
     ...prev, [name]: type === "checkbox" ? checked : value,
   }));
-  
+
 };
 
 const handleDelete = () => {
@@ -86,13 +86,13 @@ if(!eventData) return <p> Loading event ... </p>;
           <div className="flex flex-col">
             <label for="description" className="text-base font-medium mb-2">Description</label>
             <textarea name="desc" value={eventData.desc} onChange={handleChange}
-            id="description" className="placeholder-gray-600 border border-gray-300 p-2 w-full rounded bg-gray-100"></textarea>   
+            id="description" className="placeholder-gray-600 border border-gray-300 p-2 w-full rounded bg-gray-100"></textarea>
           </div>
 
           <div className="flex flex-col">
             <label className="block font-medium mb-1">Tags (Optional)</label>
             <div className="flex items-center space-x-2">
-              <input name="tags" value={eventData.tags.join(", ")} 
+              <input name="tags" value={eventData.tags.join(", ")}
               className="flex-1 p-2 rounded text-base font-normal mb-2 border border-gray-300 w-full bg-gray-100 placeholder-gray-600"
               onChange={(e) => {
                   setEventData((prev) => ({
@@ -108,8 +108,8 @@ if(!eventData) return <p> Loading event ... </p>;
               <div className="flex flex-col gap-y-5">
                 <div className="flex flex-col">
                   <label for="start-date" className="text-base font-medium mb-2">Start Date</label>
-                  <input type="date" id="start-date" required className="border border-gray-300 p-2 w-full rounded bg-gray-100" name="startDate" 
-                  value={eventData.start?.[0] || ""} 
+                  <input type="date" id="start-date" required className="border border-gray-300 p-2 w-full rounded bg-gray-100" name="startDate"
+                  value={eventData.start?.[0] || ""}
                   onChange={(e) => {
                     const newStart = [...eventData.start];
                     newStart[0] = e.target.value;
@@ -125,7 +125,7 @@ if(!eventData) return <p> Loading event ... </p>;
                       onChange={handleChange}></input>
                 </div>
               </div>
-            
+
 
               <div className="flex flex-col gap-y-5">
                 <div className="flex flex-col">
@@ -140,7 +140,7 @@ if(!eventData) return <p> Loading event ... </p>;
                   }}></input>
                 </div>
 
-                
+
                   <div className="flex flex-col">
                     <label for="end-time" className="text-base font-medium mb-2">End Time</label>
                     <input type="time" name="endTime"
@@ -192,7 +192,7 @@ if(!eventData) return <p> Loading event ... </p>;
             <button onClick={(e) => {e.preventDefault()}}
             className="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 cursor-pointer w-full max-w-2xs">Save Changes</button>
             </div>
-            
+
             {showDeleteModal && (
               <div
                 className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50"

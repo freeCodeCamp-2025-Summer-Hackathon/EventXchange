@@ -21,7 +21,8 @@
     "express": "^5.1.0",
     "express-session": "^1.18.1",
     "mongodb": "^6.17.0",
-    "mongoose": "^8.16.2"
+    "mongoose": "^8.16.2",
+    "multer": "^2.0.2"
   },
   "devDependencies": {
     "@eslint/css": "^0.9.0",

@@ -5,7 +5,9 @@ import EventModel from '../models/Event.js';
 // GET /events
 export async function getAllEvents() {
   try {
-    return await EventModel.find({}).sort({createdAt: -1});
+    return (await EventModel.find({}).sort({createdAt: -1})).map(
+      createEventDTO,
+    );
   } catch (error) {
     console.error('Error in getAllEvents controller', error);
     throw new Error('Could not retrieve events.');
@@ -17,7 +19,7 @@ export async function getEventById(id) {
   try {
     const event = await EventModel.findById(id);
     if (!event) throw new Error('Event not found!');
-    return event;
+    return createEventDTO(event);
   } catch (error) {
     console.error('Error in getEventById controller', error);
     throw error; // Re-throw the original error
@@ -30,7 +32,7 @@ export async function createEvent(eventData) {
     // Validation should be added here or in a middleware
     const newEvent = new EventModel(eventData);
     const savedEvent = await newEvent.save();
-    return savedEvent;
+    return createEventDTO(savedEvent);
   } catch (error) {
     console.error('Error in createEvent:', error);
     throw new Error(error.message);
@@ -45,7 +47,7 @@ export async function updateEvent(id, eventData) {
       runValidators: true,
     });
     if (!updatedEvent) throw new Error('Event not found!');
-    return updatedEvent;
+    return createEventDTO(updatedEvent);
   } catch (error) {
     console.error('Error in updateEvent:', error);
     throw new Error(error.message);
@@ -62,4 +64,20 @@ export async function deleteEvent(id) {
     console.error('Error in deleteEvent:', error);
     throw new Error(error.message);
   }
+}
+
+function createEventDTO(rawEvent) {
+  return {
+    id: rawEvent._id.toString(),
+    attendees: rawEvent.attendees,
+    createdAt: rawEvent.createdAt,
+    description: rawEvent.descriptiont,
+    end: rawEvent.end,
+    location: rawEvent.location,
+    organizer: rawEvent.organizer,
+    photos: rawEvent.photos,
+    start: rawEvent.start,
+    title: rawEvent.title,
+    updatedAt: rawEvent.updatedAt,
+  };
 }
