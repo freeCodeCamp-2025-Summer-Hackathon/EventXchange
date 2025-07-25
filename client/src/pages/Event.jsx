@@ -52,7 +52,7 @@ const Event = () => {
           {event.title}
         </h1>
         <p className="font-(Chocolate-Classical-Sans) text-lg mt-10 mb-10">
-          Date and Time: {event.start_date}
+          Date and Time: {new Date(event.start).toLocaleString()}
         </p>
         <p className="font-(Chocolate-Classical-Sans) text-lg">
           Hosted By: {event.organizer}

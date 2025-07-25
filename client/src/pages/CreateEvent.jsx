@@ -2,6 +2,7 @@ import { useState } from "react";
 import { FaImage } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import { createEvent } from "../services/eventService";
+import { UserContext } from "../App";
 
 const CreateEvent = () => {
   const navigate = useNavigate();
