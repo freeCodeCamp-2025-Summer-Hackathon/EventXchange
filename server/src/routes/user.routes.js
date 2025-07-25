@@ -3,23 +3,14 @@ import {createUser, loginUser} from '../controllers/user.controller.js';
 
 export const usersRouter = express.Router();
 
+usersRouter.get('/users', async (req, res) => {
+  if (!req.session.user) res.status(403).json({error: 'You are not logged'});
+  res.status(201).json({user: req.session.user});
+});
+
 usersRouter.post('/users', async (req, res) => {
-  const {name, username, password} = req.body;
-
-  if (typeof name !== 'string' || name.trim().length === 0) {
-    res.status(400).json({error: 'Must have a name.'});
-    return;
-  }
-  if (typeof username !== 'string' || username.trim().length === 0) {
-    res.status(400).json({error: 'Username is required'});
-    return;
-  }
-  if (typeof password !== 'string' || password.trim().length === 0) {
-    res.status(400).json({error: 'Password is required'});
-    return;
-  }
-
   try {
+    const {name, username, password} = req.body;
     const newUser = await createUser(name, username, password);
     req.session.user = newUser;
     res.status(201).json(newUser);
@@ -29,8 +20,8 @@ usersRouter.post('/users', async (req, res) => {
 });
 
 usersRouter.post('/login', async (req, res) => {
-  const {username, password} = req.body;
   try {
+    const {username, password} = req.body;
     const user = await loginUser(username, password);
     req.session.user = user;
     res.status(200).json(user);

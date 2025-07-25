@@ -14,6 +14,7 @@ import UserModel from '../models/User.js';
  * @typedef UserDTO
  * @type {Only<User, 'name' | 'username>'}
  * @property {string} id
+ * @property {string} joined
  */
 
 const saltRounds = 10;
@@ -26,6 +27,19 @@ const saltRounds = 10;
  * @returns {Promise<UserDTO>}
  */
 export async function createUser(name, username, password) {
+  if (typeof name !== 'string' || name.trim().length === 0) {
+    res.status(400).json({error: 'Must have a name.'});
+    return;
+  }
+  if (typeof username !== 'string' || username.trim().length === 0) {
+    res.status(400).json({error: 'Username is required'});
+    return;
+  }
+  if (typeof password !== 'string' || password.trim().length === 0) {
+    res.status(400).json({error: 'Password is required'});
+    return;
+  }
+
   const user = await UserModel.findOne({username}).lean().exec();
   if (user != null) {
     throw new Error(`A user with the username "${username}" already exists.`);
@@ -87,5 +101,6 @@ function makeUserDTO(user) {
     id: user._id.toString(),
     name: user.name,
     username: user.username,
+    joined: user.createdAt,
   };
 }
