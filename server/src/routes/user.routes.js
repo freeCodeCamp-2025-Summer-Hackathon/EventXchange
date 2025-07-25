@@ -5,7 +5,7 @@ export const usersRouter = express.Router();
 
 usersRouter.get('/users', async (req, res) => {
   if (!req.session.user) res.status(403).json({error: 'You are not logged'});
-  res.status(201).json({user: req.session.user});
+  else res.status(201).json({user: req.session.user});
 });
 
 usersRouter.post('/users', async (req, res) => {

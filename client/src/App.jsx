@@ -1,7 +1,8 @@
-import Navbar from "./components/Navbar";
-import { Outlet, useNavigate, useLocation } from "react-router-dom";
-import ScrollToTop from "./components/ScrollToTop";
 import { createContext, useEffect, useState } from "react";
+import { Outlet, useLocation, useNavigate } from "react-router-dom";
+import Navbar from "./components/Navbar";
+import ScrollToTop from "./components/ScrollToTop";
+import { api } from "./helpers/api";
 
 export const UserContext = createContext();
 
@@ -18,6 +19,17 @@ const App = () => {
       navigate(redirectPath, { replace: true });
     }
   }, [navigate, location]);
+
+  useEffect(() => {
+    const getUser = async () => {
+      const response = await api("get", "/users");
+      if (response.error != null) return;
+      console.log(response.user);
+      setUser(response.user);
+    };
+
+    getUser();
+  }, []);
 
   return (
     <UserContext.Provider value={[user, setUser]}>
