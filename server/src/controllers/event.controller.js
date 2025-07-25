@@ -71,7 +71,7 @@ function createEventDTO(rawEvent) {
     id: rawEvent._id.toString(),
     attendees: rawEvent.attendees,
     createdAt: rawEvent.createdAt,
-    description: rawEvent.descriptiont,
+    description: rawEvent.description,
     end: rawEvent.end,
     location: rawEvent.location,
     organizer: rawEvent.organizer,
