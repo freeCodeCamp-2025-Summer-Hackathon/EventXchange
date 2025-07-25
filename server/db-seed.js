@@ -39,7 +39,8 @@ async function createRandomEvent(userIds) {
   const title = faker.music.album();
   const description = faker.food.description();
   const createdAt = faker.date.past();
-  const start_date = faker.date.future();
+  const start = faker.date.future();
+  const end = faker.date.future();
   const location = faker.location.streetAddress({useFullAddress: true});
   const organizer = faker.helpers.arrayElement(userIds);
   const attendees = faker.helpers.arrayElements(
@@ -55,7 +56,8 @@ async function createRandomEvent(userIds) {
     title,
     description,
     createdAt,
-    start_date,
+    start,
+    end,
     location,
     organizer,
     attendees,
