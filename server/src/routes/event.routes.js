@@ -1,4 +1,6 @@
 import {Router} from 'express';
+import multer from 'multer';
+import path from 'node:path';
 import {
   createEvent,
   deleteEvent,
@@ -7,11 +9,31 @@ import {
   updateEvent,
 } from '../controllers/event.controller.js';
 
+const upload = multer({
+  storage: multer.diskStorage({
+    destination: './public/uploads/',
+    filename: (req, file, cb) => {
+      const originalname = file.originalname;
+      const extension = path.extname(originalname);
+      const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1e9);
+      const newFilename = file.fieldname + '-' + uniqueSuffix + extension;
+      cb(null, newFilename);
+    },
+  }),
+});
+
 export const eventsRouter = Router();
 
-eventsRouter.post('/', async (req, res) => {
+eventsRouter.post('/', upload.array('photos', 12), async (req, res) => {
   try {
-    const newEvent = await createEvent(req.body);
+    const photos = req.files
+      .filter(f => f.mimetype.startsWith('image/'))
+      .map(f => `/uploads/${f.filename}`);
+    const newEvent = await createEvent({
+      ...req.body,
+      organizer: req.session.user.id,
+      photos,
+    });
     res.status(201).json(newEvent);
   } catch (error) {
     res.status(400).json({error: error.message});

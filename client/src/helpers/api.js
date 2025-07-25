@@ -1,5 +1,7 @@
+export const apiBaseUrl = 'http://localhost:3000/api/v1';
+
 export async function api(method, endpoint, body) {
-  return await fetch(`http://localhost:3000/api/v1${endpoint}`, {
+  return await fetch(`${apiBaseUrl}${endpoint}`, {
     method,
     credentials: "include",
     mode: "cors",
