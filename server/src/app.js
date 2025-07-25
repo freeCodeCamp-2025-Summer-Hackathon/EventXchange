@@ -38,6 +38,10 @@ app.get('/protected', requiresAuth, (req, res) => {
 app.use('/api/v1', usersRouter);
 app.use('/api/v1/events', requiresAuth, eventsRouter);
 
+app.use((req, res, next) => {
+  res.status(404).json({error: 'Sorry, page not found. Please try again.'});
+});
+
 // Run the server
 app.listen(port, () => {
   console.log(`Running at http://localhost:${port}`);
