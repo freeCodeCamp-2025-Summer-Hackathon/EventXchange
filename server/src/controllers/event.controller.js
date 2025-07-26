@@ -1,13 +1,16 @@
 import EventModel from '../models/Event.js';
+import UserModel from '../models/User.js';
+import {makeUserDTO} from './user.controller.js';
 
 // Getters
 
 // GET /events
 export async function getAllEvents() {
   try {
-    return (await EventModel.find({}).sort({createdAt: -1})).map(
-      createEventDTO,
+    return await Promise.all(
+      (await EventModel.find({}).sort({createdAt: -1})).map(createEventDTO),
     );
+    // const organizerUser = await UserModel.findById(rawEvent.organizer);
   } catch (error) {
     console.error('Error in getAllEvents controller', error);
     throw new Error('Could not retrieve events.');
@@ -19,7 +22,7 @@ export async function getEventById(id) {
   try {
     const event = await EventModel.findById(id);
     if (!event) throw new Error('Event not found!');
-    return createEventDTO(event);
+    return await createEventDTO(event);
   } catch (error) {
     console.error('Error in getEventById controller', error);
     throw error; // Re-throw the original error
@@ -32,7 +35,7 @@ export async function createEvent(eventData) {
     // Validation should be added here or in a middleware
     const newEvent = new EventModel(eventData);
     const savedEvent = await newEvent.save();
-    return createEventDTO(savedEvent);
+    return await createEventDTO(savedEvent);
   } catch (error) {
     console.error('Error in createEvent:', error);
     throw new Error(error.message);
@@ -47,7 +50,7 @@ export async function updateEvent(id, eventData) {
       runValidators: true,
     });
     if (!updatedEvent) throw new Error('Event not found!');
-    return createEventDTO(updatedEvent);
+    return await createEventDTO(updatedEvent);
   } catch (error) {
     console.error('Error in updateEvent:', error);
     throw new Error(error.message);
@@ -66,7 +69,12 @@ export async function deleteEvent(id) {
   }
 }
 
-function createEventDTO(rawEvent) {
+const userMemo = {};
+async function createEventDTO(rawEvent) {
+  const organizerUser =
+    userMemo[rawEvent.organizer] ??
+    (await UserModel.findById(rawEvent.organizer));
+  userMemo[rawEvent.organizer] = organizerUser;
   return {
     id: rawEvent._id.toString(),
     attendees: rawEvent.attendees,
@@ -76,7 +84,7 @@ function createEventDTO(rawEvent) {
     location: rawEvent.location,
     maxAttendees: rawEvent.maxAttendees,
     online: rawEvent.online,
-    organizer: rawEvent.organizer,
+    organizer: organizerUser == null ? null : makeUserDTO(organizerUser),
     photos: rawEvent.photos,
     start: rawEvent.start,
     title: rawEvent.title,

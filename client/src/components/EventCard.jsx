@@ -29,15 +29,8 @@ const EventCard = ({ event }) => {
         <p className="text-gray-700 leading-tight mb-4">{event.description}</p>
         <div className="flex justify-between items-center">
           <div className="flex items-center">
-            {event.photos.forEach((photo) => (
-              <img
-                src={"http://localhost:3000" + photo}
-                alt={event.organizer}
-                className="w-8 h-8 rounded-full mr-2 object-cover"
-              />
-            ))}
             <span className="text-gray-800 font-semibold">
-              {event.organizer}
+              {event.organizer?.name ?? "User deleted"}
             </span>
           </div>
           <span className="text-gray-600">
@@ -50,4 +43,3 @@ const EventCard = ({ event }) => {
 };
 
 export default EventCard;
-

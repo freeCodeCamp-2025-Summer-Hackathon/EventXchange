@@ -58,7 +58,7 @@ const Events = () => {
           </div>
         </>
       )}
-      <div class="grid grid-cols-[repeat(auto-fit,_minmax(300px,_1fr))] gap-8">
+      <div className="grid grid-cols-[repeat(auto-fit,_minmax(300px,_1fr))] gap-8">
         {events.map((event) => (
           <>
             <EventCard key={event.id} event={event} />
@@ -89,4 +89,3 @@ const Events = () => {
 };
 
 export default Events;
-

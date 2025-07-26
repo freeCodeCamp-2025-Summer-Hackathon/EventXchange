@@ -74,7 +74,7 @@ const Event = () => {
           Date and Time: {new Date(event.start).toLocaleString()}
         </p>
         <p className="font-(Chocolate-Classical-Sans) text-lg">
-          Hosted By: {event.organizer}
+          Hosted By: {event.organizer?.name ?? "User deleted"}
         </p>
         <p className="font-(Chocolate-Classical-Sans) text-lg mt-5">
           {" "}
