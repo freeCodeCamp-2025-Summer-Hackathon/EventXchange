@@ -55,6 +55,9 @@ const EditEvent = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     const formData = new FormData(event.currentTarget);
+    if (formData.get("online") != null) {
+      formData.set("online", true);
+    }
     const newEventOrError = await updateEvent(params.eventid, formData);
     if (newEventOrError?.error != null) {
       // TODO: do something with the error
@@ -209,7 +212,7 @@ const EditEvent = () => {
             id="online-check"
             name="online"
             className="w-6 h-6 self-baseline"
-            defaultValue={eventData.online}
+            defaultChecked={eventData.online}
           />
         </div>
 
