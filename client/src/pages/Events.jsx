@@ -1,84 +1,92 @@
 import EventCard from "../components/EventCard";
 import eventDummy from "../../lib/event-dummy.js";
-import Carousel from 'react-multi-carousel';
-import 'react-multi-carousel/lib/styles.css';
+import Carousel from "react-multi-carousel";
+import "react-multi-carousel/lib/styles.css";
 import { api } from "../helpers/api";
 import { useEffect } from "react";
 import { useState } from "react";
+import { getAllEvents } from "../services/eventService.js";
 
 const Events = () => {
-    const [tempEvents, setTempEvents] = useState([]);
+  const [events, setEvents] = useState([]);
 
-    const fetchEvents = async () => {
-        const response = await api("GET", "/events");
-        
+  const fetchEvents = async () => {
+    const response = await getAllEvents();
+    if (response.error != null) {
+      // TODO: notify the user
+      console.error(response.error);
+      setEvents([]);
+      return;
+    }
+    setEvents(response);
+  };
 
-        if (response == null) {
-            setTempEvents([]);
-        }
+  useEffect(() => {
+    fetchEvents();
+  }, []);
 
-        return response;
-    };
-
-    useEffect(() => {
-        fetchEvents().then(events => {
-            const tempEvents = [...events].sort(
-                (a, b) => new Date(`${a.start[0]} ${a.start[1]}`) - new Date(`${b.start[0]} ${b.start[1]}`)
-            );
-
-            setTempEvents(tempEvents);
-        });
-    }, []);
-    
-    return (
-        <div className="p-4 w-full max-w-8xl mx-auto overflow-x-auto">
-            {tempEvents &&tempEvents.length > 0 && (
-                <>
-                    <h1 className="text-4xl font-bold text-center">Upcoming Events</h1>
-                    <div className="mb-4 overflow-x-auto">
-                        <Carousel
-                            responsive={{
-                                superLargeDesktop: {
-                                    breakpoint: { max: 4000, min: 3000 },
-                                    items: 5
-                                },
-                                desktop: {
-                                    breakpoint: { max: 3000, min: 1024 },
-                                    items: 3
-                                },
-                                tablet: {
-                                    breakpoint: { max: 1024, min: 464 },
-                                    items: 2
-                                },
-                                mobile: {
-                                    breakpoint: { max: 464, min: 0 },
-                                    items: 1
-                                }
-                            }}
-                        >
-                            {tempEvents.map((event) => (
-                                <EventCard key={event.id} event={event}/>
-                            ))}
-                        </Carousel>
-                    </div>
-                </>
-            )}
-            {(!tempEvents || tempEvents.length === 0) && (
-                <div className="text-2xl font-bold text-center mt-10">
-                    No upcoming events available.
-
-                </div>
-            )}
-            <div className="flex justify-center mt-4 space-x-8">
-                <a href="events/create-event">
-                    <div className="mt-4 p-2 bg-blue-500 text-center text-white rounded w-48"> Create an Event </div>
-                </a>
-                <button className="mt-4 p-2 bg-gray-500 text-center text-white rounded w-48 cursor-pointer" onClick={() => fetchEvents()}>
-                    Refresh Events
-                </button>
-            </div>
+  return (
+    <div className="p-4 w-full max-w-8xl mx-auto overflow-x-auto">
+      {events && events.length > 0 && (
+        <>
+          <h1 className="text-4xl font-bold text-center">Upcoming Events</h1>
+          <div className="mb-4 overflow-x-auto">
+            <Carousel
+              responsive={{
+                superLargeDesktop: {
+                  breakpoint: { max: 4000, min: 3000 },
+                  items: 5,
+                },
+                desktop: {
+                  breakpoint: { max: 3000, min: 1024 },
+                  items: 3,
+                },
+                tablet: {
+                  breakpoint: { max: 1024, min: 464 },
+                  items: 2,
+                },
+                mobile: {
+                  breakpoint: { max: 464, min: 0 },
+                  items: 1,
+                },
+              }}
+            >
+              {events.slice(0, 5).map((event) => (
+                <EventCard key={event.id} event={event} />
+              ))}
+            </Carousel>
+          </div>
+        </>
+      )}
+      <div class="grid grid-cols-[repeat(auto-fit,_minmax(300px,_1fr))] gap-8">
+        {events.map((event) => (
+          <>
+            <EventCard key={event.id} event={event} />
+          </>
+        ))}
+      </div>
+      {(!events || events.length === 0) && (
+        <div className="text-2xl font-bold text-center mt-10">
+          No upcoming events available.
         </div>
-    );
+      )}
+      <div className="flex justify-center mt-4 space-x-8">
+        <a href="events/create-event">
+          <div className="mt-4 p-2 bg-blue-500 text-center text-white rounded w-48">
+            {" "}
+            Create an Event{" "}
+          </div>
+        </a>
+        <button
+          className="mt-4 p-2 bg-gray-500 text-center text-white rounded w-48 cursor-pointer"
+          onClick={() => fetchEvents()}
+        >
+          Refresh Events
+        </button>
+      </div>
+    </div>
+  );
 };
 
 export default Events;
+
