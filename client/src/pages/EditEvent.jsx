@@ -55,7 +55,7 @@ const EditEvent = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     const formData = new FormData(event.currentTarget);
-    const newEventOrError = await updateEvent(formData);
+    const newEventOrError = await updateEvent(params.eventid, formData);
     if (newEventOrError?.error != null) {
       // TODO: do something with the error
       console.error(newEventOrError.error);
@@ -94,7 +94,6 @@ const EditEvent = () => {
         className="bg-white p-8 rounded shadow-md w-96 flex flex-col w-xl mb-[10vh] gap-5"
         onSubmit={(e) => handleSubmit(e)}
       >
-        <input type="hidden" value={eventData.id} name="id" />
         <div className="flex flex-col">
           <label htmlFor="event-title" className="text-base font-medium mb-2">
             Event Title

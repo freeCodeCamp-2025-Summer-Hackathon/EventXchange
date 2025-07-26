@@ -24,8 +24,7 @@ export const getEvent = async (id) => {
  * Updates an event
  * @param {FormData} eventData
  */
-export const updateEvent = async (eventData) => {
-  const id = eventData.get("id");
+export const updateEvent = async (id, eventData) => {
   if (id == null) return;
   const response = await fetch(`${apiBaseUrl}/events/${id}`, {
     method: "PUT",
