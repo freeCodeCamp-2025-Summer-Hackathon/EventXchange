@@ -96,7 +96,7 @@ async function checkPassword(password, hash) {
  * @param {User} user
  * @returns {UserDTO}
  */
-function makeUserDTO(user) {
+export function makeUserDTO(user) {
   return {
     id: user._id.toString(),
     name: user.name,
