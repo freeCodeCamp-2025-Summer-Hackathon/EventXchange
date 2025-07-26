@@ -3,8 +3,6 @@ import { FaImage, FaPlus, FaTrash } from "react-icons/fa";
 import { useNavigate, useParams } from "react-router-dom";
 import { getEvent, updateEvent } from "../services/eventService.js";
 
-// NOTE: event id: 6882cc9edbbd5f90fa4a3197
-
 const EditEvent = () => {
   const { eventid } = useParams();
   const navigate = useNavigate();
@@ -270,4 +268,3 @@ const EditEvent = () => {
 };
 
 export default EditEvent;
-
