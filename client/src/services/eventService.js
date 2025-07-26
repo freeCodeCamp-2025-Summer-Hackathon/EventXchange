@@ -10,6 +10,16 @@ export const createEvent = async (eventData) => {
 };
 
 /**
+ * Gets all events from the api
+ */
+export const getAllEvents = async () => {
+  const response = await fetch(`${apiBaseUrl}/events`, {
+    credentials: "include",
+  }).then((r) => r.json());
+  return response;
+};
+
+/**
  * Gets a single event from the api
  * @param {string} id
  */
