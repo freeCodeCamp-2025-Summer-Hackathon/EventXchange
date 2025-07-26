@@ -10,7 +10,7 @@ const Event = () => {
   const [event, setEvent] = useState();
 
   const isOrganizer =
-    user != null && event != null && user.id === event.organizer;
+    user != null && event != null && user.id === event.organizer?.id;
 
   const fetchEvent = async () => {
     const id = params.eventid;
@@ -77,11 +77,9 @@ const Event = () => {
           Hosted By: {event.organizer?.name ?? "User deleted"}
         </p>
         <p className="font-(Chocolate-Classical-Sans) text-lg mt-5">
-          {" "}
           Event Description:
         </p>
         <p className="font-(Chocolate-Classical-Sans) text-lg">
-          {" "}
           {event.description}
         </p>
         <div>
@@ -91,6 +89,27 @@ const Event = () => {
               className="size-100 m-20"
             />
           ))}
+        </div>
+        <div className="my-16">
+          <div className="flex gap-4 items-center my-4">
+            <h2 className="text-2xl"> Attendees </h2>
+            {!isOrganizer && (
+              <button
+                type="button"
+                className="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 cursor-pointer max-w-2xs"
+              >
+                I'm going
+              </button>
+            )}
+          </div>
+          <ul>
+            {event.attendees.map((attendee) => (
+              <>
+                <li>{attendee}</li>
+              </>
+            ))}
+          </ul>
+          {event.attendees.length === 0 && <div>No one is going yet.</div>}
         </div>
       </div>
     </>

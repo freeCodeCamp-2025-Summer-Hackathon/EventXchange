@@ -59,7 +59,7 @@ eventsRouter.get('/:id', async (req, res) => {
   }
 });
 
-eventsRouter.put('/:id', upload.array(12, 'photos'), async (req, res) => {
+eventsRouter.patch('/:id', upload.array(12, 'photos'), async (req, res) => {
   try {
     const updated = await updateEvent(req.params.id, req.body);
     res.status(200).json(updated);

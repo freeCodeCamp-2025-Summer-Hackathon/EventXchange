@@ -46,8 +46,8 @@ export async function createEvent(eventData) {
 export async function updateEvent(id, eventData) {
   try {
     const updatedEvent = await EventModel.findByIdAndUpdate(id, eventData, {
-      new: true,
       runValidators: true,
+      lazy: true,
     });
     if (!updatedEvent) throw new Error('Event not found!');
     return await createEventDTO(updatedEvent);
