@@ -142,6 +142,7 @@ const EditEvent = () => {
                   src={image}
                   alt="Preview"
                   className="w-xs grow shrink border-solid border-blue-400 border-2 rounded-xs"
+                  key={image}
                 />
               ))
             ) : (
