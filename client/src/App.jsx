@@ -24,7 +24,6 @@ const App = () => {
     const getUser = async () => {
       const response = await api("get", "/users");
       if (response.error != null) return;
-      console.log(response.user);
       setUser(response.user);
     };
 

@@ -23,9 +23,15 @@ const CreateEvent = () => {
     }
   };
 
+  /**
+   * @param {SubmitEvent} event
+   */
   const handleSubmit = async (event) => {
     event.preventDefault();
     const formData = new FormData(event.currentTarget);
+    if (formData.get("online") != null) {
+      formData.set("online", true);
+    }
     const newEventOrError = await createEvent(formData);
     if (newEventOrError?.error != null) {
       // TODO: do something with the error

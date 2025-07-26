@@ -74,10 +74,13 @@ function createEventDTO(rawEvent) {
     description: rawEvent.description,
     end: rawEvent.end,
     location: rawEvent.location,
+    maxAttendees: rawEvent.maxAttendees,
+    online: rawEvent.online,
     organizer: rawEvent.organizer,
     photos: rawEvent.photos,
     start: rawEvent.start,
     title: rawEvent.title,
     updatedAt: rawEvent.updatedAt,
+    visibility: rawEvent.visibility,
   };
 }
