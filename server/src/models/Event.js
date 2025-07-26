@@ -40,6 +40,18 @@ const eventSchema = new Schema(
       type: String,
       required: true,
     },
+    online: {
+      type: Boolean,
+      default: false,
+    },
+    visibility: {
+      type: String,
+      default: 'Public',
+    },
+    maxAttendees: {
+      type: Number,
+      required: true,
+    },
     organizer: {
       type: Schema.Types.ObjectId,
       ref: 'User',
@@ -50,9 +62,6 @@ const eventSchema = new Schema(
         ref: 'User',
       },
     ],
-    tags: {
-      type: [String],
-    },
   },
   {
     timestamps: true,
