@@ -45,9 +45,11 @@ export async function createEvent(eventData) {
 // UPDATE /events/:id
 export async function updateEvent(id, eventData) {
   try {
+    console.log(eventData);
     const updatedEvent = await EventModel.findByIdAndUpdate(id, eventData, {
       runValidators: true,
-      lazy: true,
+      lean: true,
+      returnDocument: 'after',
     });
     if (!updatedEvent) throw new Error('Event not found!');
     return await createEventDTO(updatedEvent);
@@ -75,9 +77,16 @@ async function createEventDTO(rawEvent) {
     userMemo[rawEvent.organizer] ??
     (await UserModel.findById(rawEvent.organizer));
   userMemo[rawEvent.organizer] = organizerUser;
+  const attendeeUsers = await Promise.all(
+    rawEvent.attendees.map(async id => {
+      const attendeeUser = userMemo[id] ?? (await UserModel.findById(id));
+      userMemo[id] = attendeeUser;
+      return attendeeUser;
+    }),
+  );
   return {
     id: rawEvent._id.toString(),
-    attendees: rawEvent.attendees,
+    attendees: attendeeUsers,
     createdAt: rawEvent.createdAt,
     description: rawEvent.description,
     end: rawEvent.end,

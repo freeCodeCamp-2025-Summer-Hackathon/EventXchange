@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { api } from "../helpers/api";
 import { UserContext } from "../App";
+import { rsvpEvent } from "../services/eventService";
 
 const Event = () => {
   const params = useParams();
@@ -50,6 +51,15 @@ const Event = () => {
     );
   }
 
+  const handleRsvp = async (going) => {
+    const response = await rsvpEvent(event, user.id, going);
+    if (response.error != null) {
+      console.error(response.error);
+      return;
+    }
+    await fetchEvent();
+  };
+
   return (
     <>
       <div className="container mx-auto">
@@ -85,6 +95,7 @@ const Event = () => {
         <div>
           {event.photos.map((photo) => (
             <img
+              key={photo}
               src={`http://localhost:3000${photo}`}
               className="size-100 m-20"
             />
@@ -97,6 +108,7 @@ const Event = () => {
               <button
                 type="button"
                 className="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 cursor-pointer max-w-2xs"
+                onClick={() => handleRsvp(true)}
               >
                 I'm going
               </button>
@@ -104,9 +116,7 @@ const Event = () => {
           </div>
           <ul>
             {event.attendees.map((attendee) => (
-              <>
-                <li>{attendee}</li>
-              </>
+              <li key={attendee.id}>{attendee.name}</li>
             ))}
           </ul>
           {event.attendees.length === 0 && <div>No one is going yet.</div>}
