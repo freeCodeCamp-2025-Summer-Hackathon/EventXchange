@@ -49,12 +49,19 @@ const EditEvent = () => {
     }
   };
 
-  const handleChange = (e) => {
-    const { name, value, type, checked } = e.target;
-    setEventData((prev) => ({
-      ...prev,
-      [name]: type === "checkbox" ? checked : value,
-    }));
+  /**
+   * @param {SubmitEvent} event
+   */
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    const formData = new FormData(event.currentTarget);
+    const newEventOrError = await updateEvent(formData);
+    if (newEventOrError?.error != null) {
+      // TODO: do something with the error
+      console.error(newEventOrError.error);
+    } else {
+      navigate(`/events/${newEventOrError.id}`);
+    }
   };
 
   const handleDelete = () => {

@@ -23,6 +23,9 @@ const CreateEvent = () => {
     }
   };
 
+  /**
+   * @param {SubmitEvent} event
+   */
   const handleSubmit = async (event) => {
     event.preventDefault();
     const formData = new FormData(event.currentTarget);
