@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { FaImage, FaPlus, FaTrash } from "react-icons/fa";
 import { useNavigate, useParams } from "react-router-dom";
-import { getEvent } from "../services/eventService.js";
+import { getEvent, updateEvent } from "../services/eventService.js";
 
 // NOTE: event id: 6882cc9edbbd5f90fa4a3197
 
@@ -81,8 +81,6 @@ const EditEvent = () => {
     <div className="edit-event bg-gray-100 flex flex-col justify-center items-center">
       <h1 className="text-center text-3xl mt-5 mb-5">Edit Event</h1>
 
-      <pre>{JSON.stringify(eventData, null, 2)}</pre>
-
       {showSuccess && (
         <div className="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative w-[90%] max-w-md mx-auto mb-4">
           <strong className="font-bold">Success!</strong>
@@ -92,7 +90,11 @@ const EditEvent = () => {
         </div>
       )}
 
-      <form className="bg-white p-8 rounded shadow-md w-96 flex flex-col w-xl mb-[10vh] gap-5">
+      <form
+        className="bg-white p-8 rounded shadow-md w-96 flex flex-col w-xl mb-[10vh] gap-5"
+        onSubmit={(e) => handleSubmit(e)}
+      >
+        <input type="hidden" value={eventData.id} name="id" />
         <div className="flex flex-col">
           <label htmlFor="event-title" className="text-base font-medium mb-2">
             Event Title
@@ -161,7 +163,7 @@ const EditEvent = () => {
                 type="datetime-local"
                 className="border border-gray-300 p-2 w-full rounded bg-gray-100"
                 required
-                defaultValue={eventData.start}
+                defaultValue={eventData.start.slice(0, 16)}
               />
             </div>
           </div>
@@ -175,7 +177,7 @@ const EditEvent = () => {
                 type="datetime-local"
                 className="border border-gray-300 p-2 w-full rounded bg-gray-100"
                 required
-                defaultValue={eventData.end}
+                defaultValue={eventData.end.slice(0, 16)}
               />
             </div>
           </div>
@@ -251,7 +253,7 @@ const EditEvent = () => {
             type="submit"
             className="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 cursor-pointer w-full max-w-2xs"
           >
-            Create Event
+            Save Event Changes
           </button>
           <button
             className="px-4 py-2 rounded-md bg-red-900 text-white hover:bg-red-700 transition"
