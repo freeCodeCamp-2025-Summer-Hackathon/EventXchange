@@ -14,7 +14,7 @@
 - Jolene (JoleneKearse)
 
 ## Project Overview
-Created for the fCC 2025 Summer Hackathon, EventXchange is a community-based app centred around connecting you with amazing events hosted by like-minded individuals. Users can discover, create, and schedule events at their creative leisure.
+Created for the fCC 2025 Summer Hackathon, EventXchange is a community-based app centred around connecting you with amazing events hosted by like-minded individuals. Users can create, delete, and schedule events at their creative leisure, as well RSVP to other users' events.
 
 ## Tech Stack
 This project uses the MERN (MongoDB, Express, React, Node) stack and npm for the package manager.
@@ -39,7 +39,7 @@ This project uses the MERN (MongoDB, Express, React, Node) stack and npm for the
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
 ### Project status
-Ongoing! Several planned features like notifications, updating and deleting events, and RSVP-ing to other users' events have yet to be implemented.
+Ongoing! Some planned features like notifications and updating created events have yet to be implemented.
 
 ### Old mockups and wireframes
 - Rough Sketch: https://excalidraw.com/#json=jxTLV8Jnf0G45iMDcRRYu,i5uVK75gG2UmX6Xb-8dB1g
