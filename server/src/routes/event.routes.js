@@ -1,4 +1,4 @@
-import {Router} from 'express';
+import {Router, json} from 'express';
 import multer from 'multer';
 import path from 'node:path';
 import {
@@ -59,9 +59,11 @@ eventsRouter.get('/:id', async (req, res) => {
   }
 });
 
-eventsRouter.put('/:id', upload.array(12, 'photos'), async (req, res) => {
+eventsRouter.patch('/:id', upload.array(12, 'photos'), async (req, res) => {
   try {
-    const updated = await updateEvent(req.params.id, req.body);
+    const eventData = req.body.data ? JSON.parse(req.body.data) : req.body;
+    console.log('routes (json)', eventData);
+    const updated = await updateEvent(req.params.id, eventData);
     res.status(200).json(updated);
   } catch (error) {
     const statusCode = error.message.includes('not found') ? 404 : 400;
