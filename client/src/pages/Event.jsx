@@ -13,6 +13,11 @@ const Event = () => {
   const isOrganizer =
     user != null && event != null && user.id === event.organizer?.id;
 
+  const isGoing =
+    user != null &&
+    event != null &&
+    event.attendees.some((a) => a.id === user.id);
+
   const fetchEvent = async () => {
     const id = params.eventid;
     const response = await api("GET", `/events/${id}`);
@@ -104,7 +109,7 @@ const Event = () => {
         <div className="my-16">
           <div className="flex gap-4 items-center my-4">
             <h2 className="text-2xl"> Attendees </h2>
-            {!isOrganizer && (
+            {!isOrganizer && !isGoing && (
               <button
                 type="button"
                 className="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 cursor-pointer max-w-2xs"
@@ -116,7 +121,18 @@ const Event = () => {
           </div>
           <ul>
             {event.attendees.map((attendee) => (
-              <li key={attendee.id}>{attendee.name}</li>
+              <li key={attendee.id} className="flex items-center gap-2">
+                {attendee.name}
+                {attendee.id === user.id && (
+                  <button
+                    type="button"
+                    className="bg-blue-500 text-white px-2 rounded-md hover:bg-blue-600 cursor-pointer max-w-2xs"
+                    onClick={() => handleRsvp(false)}
+                  >
+                    X
+                  </button>
+                )}
+              </li>
             ))}
           </ul>
           {event.attendees.length === 0 && <div>No one is going yet.</div>}

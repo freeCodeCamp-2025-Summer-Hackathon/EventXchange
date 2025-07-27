@@ -53,13 +53,15 @@ export const updateEvent = async (id, eventData) => {
  */
 export const rsvpEvent = async (event, userId, going = true) => {
   if (event == null) return;
+  const attendeeIds = event.attendees.map((a) => a.id);
   const attendees = going
-    ? event.attendees.concat(userId)
-    : event.attendees.filter((id) => id !== userId);
+    ? attendeeIds.concat(userId)
+    : attendeeIds.filter((id) => id !== userId);
   const data = new FormData();
-  attendees.forEach((attendee) => {
-    data.append("attendees[]", attendee);
-  });
+  data.set("data", JSON.stringify({ attendees }));
+  // attendees.forEach((attendee) => {
+  //   data.append("attendees[]", attendee);
+  // });
   const response = await fetch(`${apiBaseUrl}/events/${event.id}`, {
     method: "PATCH",
     credentials: "include",

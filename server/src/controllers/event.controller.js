@@ -45,7 +45,6 @@ export async function createEvent(eventData) {
 // UPDATE /events/:id
 export async function updateEvent(id, eventData) {
   try {
-    console.log(eventData);
     const updatedEvent = await EventModel.findByIdAndUpdate(id, eventData, {
       runValidators: true,
       lean: true,
@@ -81,12 +80,13 @@ async function createEventDTO(rawEvent) {
     rawEvent.attendees.map(async id => {
       const attendeeUser = userMemo[id] ?? (await UserModel.findById(id));
       userMemo[id] = attendeeUser;
-      return attendeeUser;
+      if (attendeeUser == null) return null;
+      return makeUserDTO(attendeeUser);
     }),
   );
   return {
     id: rawEvent._id.toString(),
-    attendees: attendeeUsers,
+    attendees: attendeeUsers.filter(u => u != null),
     createdAt: rawEvent.createdAt,
     description: rawEvent.description,
     end: rawEvent.end,
