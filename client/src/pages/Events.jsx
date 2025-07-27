@@ -55,7 +55,11 @@ const Events = () => {
           </div>
         </>
       )}
-    
+      <div className="grid grid-cols-[repeat(auto-fit,_minmax(300px,_1fr))] gap-8">
+        {events.map((event) => (
+            <EventCard key={event.id} event={event} />
+        ))}
+      </div>
       {(!events || events.length === 0) && (
         <div className="text-2xl font-bold text-center mt-10">
           No upcoming events available.
