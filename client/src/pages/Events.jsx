@@ -1,10 +1,7 @@
-import EventCard from "../components/EventCard";
-import eventDummy from "../../lib/event-dummy.js";
+import { useEffect, useState } from "react";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-import { api } from "../helpers/api";
-import { useEffect } from "react";
-import { useState } from "react";
+import EventCard from "../components/EventCard";
 import { getAllEvents } from "../services/eventService.js";
 
 const Events = () => {
@@ -60,9 +57,7 @@ const Events = () => {
       )}
       <div className="grid grid-cols-[repeat(auto-fit,_minmax(300px,_1fr))] gap-8">
         {events.map((event) => (
-          <>
             <EventCard key={event.id} event={event} />
-          </>
         ))}
       </div>
       {(!events || events.length === 0) && (

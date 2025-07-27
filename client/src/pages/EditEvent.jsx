@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import { FaImage, FaPlus, FaTrash } from "react-icons/fa";
+import { FaImage } from "react-icons/fa";
 import { useNavigate, useParams } from "react-router-dom";
-import { getEvent, updateEvent } from "../services/eventService.js";
+import { deleteEvent, getEvent, updateEvent } from "../services/eventService.js";
 
 const EditEvent = () => {
   const { eventid } = useParams();
@@ -56,24 +56,24 @@ const EditEvent = () => {
     if (formData.get("online") != null) {
       formData.set("online", true);
     }
-    const newEventOrError = await updateEvent(params.eventid, formData);
-    if (newEventOrError?.error != null) {
+    const response = await updateEvent(params.eventid, formData);
+    if (response?.error != null) {
       // TODO: do something with the error
-      console.error(newEventOrError.error);
+      console.error(response.error);
     } else {
-      navigate(`/events/${newEventOrError.id}`);
+      navigate(`/events/${response.id}`);
     }
   };
 
-  const handleDelete = () => {
-    // TODO: use the event service to delete the event
-    console.log(`Deleting event ${eventData.id}`);
-    setShowDeleteModal(false);
-    setShowSuccess(true);
-
-    setTimeout(() => {
-      navigate("/events");
-    }, 2000);
+  const handleDelete = async () => {
+    if (confirm('Are you sure?')) {
+      const response = await deleteEvent(params.eventid);
+      if (response?.error != null) {
+        console.error(response.error);
+      } else {
+        navigate(`/events`);
+      }
+    }
   };
 
   if (!eventData) return <p> Loading event ... </p>;
@@ -256,8 +256,9 @@ const EditEvent = () => {
             Save Event Changes
           </button>
           <button
+            type="button"
             className="px-4 py-2 rounded-md bg-red-900 text-white hover:bg-red-700 transition"
-            onClick={handleDelete}
+            onClick={() => handleDelete()}
           >
             Delete Event
           </button>
