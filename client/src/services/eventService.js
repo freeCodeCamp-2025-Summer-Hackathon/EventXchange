@@ -69,3 +69,15 @@ export const rsvpEvent = async (event, userId, going = true) => {
   }).then((r) => r.json());
   return response;
 };
+
+/**
+ * Deletes an event
+ * @params {string} id
+ */
+export const deleteEvent = async (id) => {
+  const response = await fetch(`${apiBaseUrl}/events/${id}`, {
+    method: "DELETE",
+    credentials: "include",
+  }).then((r) => r.json());
+  return response;
+};
