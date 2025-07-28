@@ -71,7 +71,7 @@ const Events = () => {
       )}
       <div className="flex justify-center mt-4 space-x-8">
         {user && (
-          <Link to="events/create-event" className="mt-4 p-2 bg-darkTangerine text-center text-white rounded w-48">
+          <Link to="create-event" className="mt-4 p-2 bg-darkTangerine text-center text-white rounded w-48">
               Create an Event
           </Link>
         )}
