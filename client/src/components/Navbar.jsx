@@ -9,7 +9,7 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className="sticky top-0 w-full bg-darkTangerine font-bold h-[6rem] z-50">
+      <nav className="sticky top-0 w-full bg-darkTangerine font-bold h-[6rem] z-50 shadow-lg">
         <div className="flex items-center h-full w-full mx-auto px-5">
           {/* LEFT */}
           <div className="ml-[3rem]">
