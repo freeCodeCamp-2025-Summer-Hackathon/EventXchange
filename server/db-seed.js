@@ -51,6 +51,7 @@ async function createRandomEvent(userIds) {
     min: 0,
     max: maxNumberOfTags,
   });
+  const maxAttendees = faker.number.int({min: 1, max:100})
 
   await createEvent({
     title,
@@ -62,5 +63,6 @@ async function createRandomEvent(userIds) {
     organizer,
     attendees,
     tags,
+    maxAttendees,
   });
 }
