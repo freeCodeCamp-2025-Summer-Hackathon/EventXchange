@@ -19,12 +19,13 @@ const Navbar = () => {
               </h1>
             </div>
           </div>
-          {/*  SPACER  */}
+
+          {/* SPACER */}
           <div className="flex-grow"></div>
 
           {/* RIGHT (desktop) */}
           <div className="mr-[3rem]">
-            <ul className="hidden sm:flex space-x-6 font-bold text-xl font-hti font">
+            <ul className="hidden sm:flex space-x-6 font-bold text-xl">
               {user && (
                 <li className="transition-transform duration-50 hover:scale-102">
                   <Link to="/events">Events</Link>
@@ -49,9 +50,57 @@ const Navbar = () => {
                 </>
               )}
             </ul>
-            <div></div>
+
+            {/* Hamburger Toggle Button (mobile only) */}
+            <div
+              className="sm:hidden text-xl font-bold cursor-pointer"
+              onClick={() => setMenuOpen(!menuOpen)}
+            >
+              MENU
+            </div>
           </div>
         </div>
+
+        {/* MOBILE MENU */}
+        {menuOpen && (
+          <div className="absolute top-[6rem] left-0 w-full bg-darkTangerine text-black shadow-md sm:hidden">
+            <ul className="flex flex-col items-start space-y-4 px-5 py-6 text-xl">
+              {user && (
+                <li>
+                  <Link to="/events" onClick={() => setMenuOpen(false)}>
+                    Events
+                  </Link>
+                </li>
+              )}
+              <li>
+                <Link to="/calender" onClick={() => setMenuOpen(false)}>
+                  Calender
+                </Link>
+              </li>
+              {user && (
+                <li>
+                  <Link to="/logout" onClick={() => setMenuOpen(false)}>
+                    Logout
+                  </Link>
+                </li>
+              )}
+              {!user && (
+                <>
+                  <li>
+                    <Link to="/login" onClick={() => setMenuOpen(false)}>
+                      Login
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/signup" onClick={() => setMenuOpen(false)}>
+                      Signup
+                    </Link>
+                  </li>
+                </>
+              )}
+            </ul>
+          </div>
+        )}
       </nav>
     </>
   );
