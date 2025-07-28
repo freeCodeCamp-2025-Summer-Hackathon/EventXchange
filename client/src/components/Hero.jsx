@@ -12,16 +12,8 @@ const Hero = () => {
                         Your one-stop platform for discovering and sharing events in your community.
                 </p>
                 <div className="flex justify-center gap-4">
-                    <button
-                        className="bg-darkTangerine text-white px-6 py-3 rounded-lg text-lg hover:bg-orange-700 transition cursor-pointer"
-                    >
-                        <Link to="/signup">Get Started</Link>
-                    </button>
-                    <button 
-                        className="border border-gray-400 px-6 py-3 rounded-lg text-lg hover:bg-gray-100 transition cursor-pointer" 
-                    >
-                        <Link to="/about">Learn More</Link>
-                    </button>
+                    <Link className="bg-darkTangerine text-white px-6 py-3 rounded-lg text-lg hover:bg-orange-700 transition cursor-pointer" to="/signup">Get Started</Link>
+                    <Link className="border border-gray-400 px-6 py-3 rounded-lg text-lg hover:bg-gray-100 transition cursor-pointer" to="/about">Learn More</Link>
                 </div>
             </div>
         </section>
