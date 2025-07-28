@@ -3,9 +3,13 @@ import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import EventCard from "../components/EventCard";
 import { getAllEvents } from "../services/eventService.js";
+import React, { useContext } from "react";
+import { UserContext } from "../App";
+import { Link } from "react-router-dom";
 
 const Events = () => {
   const [events, setEvents] = useState([]);
+  const [user] = useContext(UserContext);
 
   const fetchEvents = async () => {
     const response = await getAllEvents();
@@ -66,12 +70,11 @@ const Events = () => {
         </div>
       )}
       <div className="flex justify-center mt-4 space-x-8">
-        <a href="events/create-event">
-          <div className="mt-4 p-2 bg-darkTangerine text-center text-white rounded w-48">
-            {" "}
-            Create an Event{" "}
-          </div>
-        </a>
+        {user && (
+          <Link to="events/create-event" className="mt-4 p-2 bg-darkTangerine text-center text-white rounded w-48">
+              Create an Event
+          </Link>
+        )}
         <button
           className="mt-4 p-2 bg-gray-500 text-center text-white rounded w-48 cursor-pointer"
           onClick={() => fetchEvents()}

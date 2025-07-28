@@ -26,11 +26,9 @@ const Navbar = () => {
           {/* RIGHT (desktop) */}
           <div className="mr-[3rem]">
             <ul className="hidden sm:flex space-x-6 font-bold text-xl">
-              {user && (
-                <li className="transition-transform duration-50 hover:scale-102">
-                  <Link to="/events">Events</Link>
-                </li>
-              )}
+              <li className="transition-transform duration-50 hover:scale-102">
+                <Link to="/events">Events</Link>
+              </li>
               <li className="transition-transform duration-50 hover:scale-102">
                 <Link to="/calender">Calender</Link>
               </li>
@@ -65,13 +63,11 @@ const Navbar = () => {
         {menuOpen && (
           <div className="absolute top-[6rem] left-0 w-full bg-darkTangerine text-black shadow-md sm:hidden">
             <ul className="flex flex-col items-start space-y-4 px-5 py-6 text-xl">
-              {user && (
-                <li>
-                  <Link to="/events" onClick={() => setMenuOpen(false)}>
-                    Events
-                  </Link>
-                </li>
-              )}
+              <li>
+                <Link to="/events" onClick={() => setMenuOpen(false)}>
+                  Events
+                </Link>
+              </li>
               <li>
                 <Link to="/calender" onClick={() => setMenuOpen(false)}>
                   Calender
