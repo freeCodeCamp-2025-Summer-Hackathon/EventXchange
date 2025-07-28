@@ -25,12 +25,11 @@ const Navbar = () => {
           {/* RIGHT (desktop) */}
           <div className="mr-[3rem]">
             <ul className="hidden sm:flex space-x-6 font-bold text-xl font-hti font">
-              {/* <li className="transition-transform duration-50 hover:scale-102">
-                <Link to="/dashboard">Dashboard</Link>
-              </li> */}
-              <li className="transition-transform duration-50 hover:scale-102">
-                <Link to="/events">Events</Link>
-              </li>
+              {user && (
+                <li className="transition-transform duration-50 hover:scale-102">
+                  <Link to="/events">Events</Link>
+                </li>
+              )}
               <li className="transition-transform duration-50 hover:scale-102">
                 <Link to="/calender">Calender</Link>
               </li>

@@ -32,7 +32,7 @@ const Login = () => {
   };
 
   return (
-    <div className="flex items-center justify-center h-[calc(100vh-6rem)] bg-gradient-to-b from-orange-50 to-white ">
+    <div className="flex items-center justify-center h-[calc(100vh-6rem)]">
       <div className="bg-white p-8 rounded shadow-md w-96">
         <h2 className="text-2xl font-bold mb-6 text-center">Login</h2>
         <form className="space-y-4" onSubmit={(event) => handleLogin(event)}>

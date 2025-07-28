@@ -74,8 +74,7 @@ function CalendarApp() {
 
   return (
     <>
-
-      <div className="bg-gradient-to-b from-orange-50 to-white">
+      <div>
         <h1 className="text-center center text-4xl text-orange-600 py-10">
           Events Calendar
         </h1>

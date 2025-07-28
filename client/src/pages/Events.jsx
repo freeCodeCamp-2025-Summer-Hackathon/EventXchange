@@ -23,7 +23,7 @@ const Events = () => {
   }, []);
 
   return (
-    <div className="p-4 w-full max-w-8xl mx-auto overflow-x-auto bg-gradient-to-b from-orange-50 to-white">
+    <div className="p-4 w-full max-w-8xl mx-auto overflow-x-auto">
       {events && events.length > 0 && (
         <>
           <h1 className="text-4xl font-bold text-center">Upcoming Events</h1>

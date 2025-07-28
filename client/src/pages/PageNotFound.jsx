@@ -1,6 +1,6 @@
 const PageNotFound = () => {
   return (
-    <div className="flex flex-col items-center justify-center h-[calc(100vh-6rem)] bg-gradient-to-b from-orange-50 to-white">
+    <div className="flex flex-col items-center justify-center h-[calc(100vh-6rem)]">
       <h1 className="text-8xl font-bold text-center mb-8">404</h1>
       <h2 className="text-lg text-center mb-4">Page Not Found</h2>
       <p className="text-center text-gray-600">

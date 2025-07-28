@@ -79,7 +79,7 @@ const EditEvent = () => {
   if (!eventData) return <p> Loading event ... </p>;
 
   return (
-    <div className="edit-event bg-gray-100 flex flex-col justify-center items-center bg-gradient-to-b from-orange-50 to-white">
+    <div className="edit-event bg-gray-100 flex flex-col justify-center items-center">
       <h1 className="text-center text-3xl mt-5 mb-5">Edit Event</h1>
 
       {showSuccess && (

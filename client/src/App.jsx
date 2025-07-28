@@ -35,7 +35,7 @@ const App = () => {
       <div className="flex flex-col min-h-screen">
         <Navbar />
         <ScrollToTop />
-        <main className="flex-grow">
+        <main className="flex-grow bg-gradient-to-b from-orange-50 to-white">
           <Outlet />
         </main>
       </div>
