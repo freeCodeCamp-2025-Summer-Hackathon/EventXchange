@@ -67,7 +67,7 @@ const Events = () => {
       )}
       <div className="flex justify-center mt-4 space-x-8">
         <a href="events/create-event">
-          <div className="mt-4 p-2 bg-blue-500 text-center text-white rounded w-48">
+          <div className="mt-4 p-2 bg-darkTangerine text-center text-white rounded w-48">
             {" "}
             Create an Event{" "}
           </div>

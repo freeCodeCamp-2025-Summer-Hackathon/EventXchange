@@ -1,17 +1,17 @@
-# Orange Bytes
+![EventXchange](client/public/EventXchange.png)
 
-## Members
+## Team Orange Bytes
 
-- BrettK (Brett Kinnamon)
-- _breee (Brecon N)
-- Sage (Khalil A)
-- LittleInksmith (Zaynab JC)
-- Keith (Keith Miquela)
-- dfdx2 (D Davis)
-- robynbee (Robyn B)
+- [BrettK (Brett Kinnamon)](https://github.com/brettk-dev)
+- [_breee (Brecon N)](https://github.com/breconm)
+- [Sage (Khalil A)](https://github.com/khalil-alexander)
+- [LittleInksmith (Zaynab JC)](https://github.com/curiousConductor49)
+- [Keith (Keith Miquela)](https://github.com/keithmiquela)
+- [dfdx2 (D Davis)](https://github.com/dfdx2)
+- [robynbee (Robyn B)](https://github.com/RBodde)
 - [Tailsmonster (Nico Aroca)](https://github.com/tailsmonster)
-- Vessel
-- Jolene (JoleneKearse)
+- [Vessel](https://github.com/VesselOfSouls)
+- [Jolene (JoleneKearse)](https://github.com/JoleneKearse)
 
 ## Project Overview
 Created for the fCC 2025 Summer Hackathon, EventXchange is a community-based app centred around connecting you with amazing events hosted by like-minded individuals. Users can create, delete, and schedule events at their creative leisure, as well RSVP to other users' events.

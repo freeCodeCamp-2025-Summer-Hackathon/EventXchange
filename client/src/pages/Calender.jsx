@@ -74,14 +74,14 @@ function CalendarApp() {
 
   return (
     <>
-      {
-        // add Chocolate Sans in the future
-      }
-      <h1 className="text-center center text-4xl text-orange-600 py-10">
-        Events Calendar
-      </h1>
-      <div className="font-(Chocolate-Classical-Sans) pt-15px max-w-90vw h-[60vh] overflow-y-auto mx-15">
-        <ScheduleXCalendar calendarApp={calendar} />
+      <div>
+        <h1 className="text-center center text-4xl text-orange-600 py-10">
+          Events Calendar
+        </h1>
+        <div className="font-(Chocolate-Classical-Sans) pt-15px max-w-90vw h-[60vh] overflow-y-auto mx-15">
+          <ScheduleXCalendar calendarApp={calendar} />
+        </div>
+
       </div>
     </>
   );

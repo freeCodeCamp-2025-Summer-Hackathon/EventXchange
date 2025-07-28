@@ -32,7 +32,7 @@ const Login = () => {
   };
 
   return (
-    <div className="flex items-center justify-center h-[calc(100vh-6rem)] bg-gray-100 ">
+    <div className="flex items-center justify-center h-[calc(100vh-6rem)]">
       <div className="bg-white p-8 rounded shadow-md w-96">
         <h2 className="text-2xl font-bold mb-6 text-center">Login</h2>
         <form className="space-y-4" onSubmit={(event) => handleLogin(event)}>
@@ -70,7 +70,7 @@ const Login = () => {
             />
           </div>
           <button
-            className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 cursor-pointer w-full disabled:cursor-not-allowed disabled:opacity-50"
+            className="bg-darkTangerine text-white py-2 px-4 rounded hover:bg-orange-700 cursor-pointer w-full disabled:cursor-not-allowed disabled:opacity-50"
             disabled={!username || !password}
             type="submit"
           >
@@ -78,7 +78,7 @@ const Login = () => {
           </button>
           <p className="mt-4 text-sm text-center">
             Don't have an account?{" "}
-            <a href="/signup" className="text-blue-500">
+            <a href="/signup" className="text-darkTangerine">
               Register
             </a>
           </p>

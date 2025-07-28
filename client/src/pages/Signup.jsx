@@ -40,7 +40,7 @@ const Signup = () => {
   };
 
   return (
-    <div className="flex items-center justify-center h-[calc(100vh-6rem)] bg-gray-100">
+    <div className="flex items-center justify-center h-[calc(100vh-6rem)]">
       <div className="bg-white p-8 rounded shadow-md w-96">
         <h2 className="text-2xl font-bold mb-6 text-center">Signup</h2>
         <form className="space-y-4" onSubmit={(e) => handleSubmit(e)}>
@@ -91,7 +91,7 @@ const Signup = () => {
             />
           </div>
           <button
-            className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 cursor-pointer w-full disabled:cursor-not-allowed disabled:opacity-50"
+            className="bg-darkTangerine text-white py-2 px-4 rounded hover:bg-orange-700 cursor-pointer w-full disabled:cursor-not-allowed disabled:opacity-50"
             disabled={!username || !password}
             type="submit"
           >
@@ -99,7 +99,7 @@ const Signup = () => {
           </button>
           <p className="mt-4 text-sm text-center">
             Already have an account?{" "}
-            <a href="/login" className="text-blue-500">
+            <a href="/login" className="text-darkTangerine">
               Login
             </a>
           </p>
