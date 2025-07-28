@@ -23,7 +23,7 @@ const Events = () => {
   }, []);
 
   return (
-    <div className="p-4 w-full max-w-8xl mx-auto overflow-x-auto">
+    <div className="p-4 w-full max-w-8xl mx-auto overflow-x-auto bg-gradient-to-b from-orange-50 to-white">
       {events && events.length > 0 && (
         <>
           <h1 className="text-4xl font-bold text-center">Upcoming Events</h1>
@@ -67,7 +67,7 @@ const Events = () => {
       )}
       <div className="flex justify-center mt-4 space-x-8">
         <a href="events/create-event">
-          <div className="mt-4 p-2 bg-blue-500 text-center text-white rounded w-48">
+          <div className="mt-4 p-2 bg-darkTangerine text-center text-white rounded w-48">
             {" "}
             Create an Event{" "}
           </div>

@@ -4,6 +4,7 @@ import App from "../App";
 
 // Pages
 import Dashboard from "../pages/Dashboard";
+import About from "../pages/About";
 import Login from "../pages/Login";
 import Signup from "../pages/Signup";
 import Logout from "../pages/Logout";
@@ -24,6 +25,7 @@ export const router = createBrowserRouter([
     element: <App />,
     children: [
       { path: "", element: <Dashboard /> },
+      { path: "about", element: <About /> },
       { path: "login", element: <Login /> },
       { path: "signup", element: <Signup /> },
       { path: "logout", element: <Logout /> },

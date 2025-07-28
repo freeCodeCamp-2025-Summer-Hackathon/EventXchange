@@ -76,7 +76,7 @@ const Event = () => {
           {isOrganizer && (
             <>
               <Link
-                className="text-blue-700 underline"
+                className="text-orange-700 underline"
                 to={`/events/${event.id}/edit`}
               >
                 {" "}
@@ -112,7 +112,7 @@ const Event = () => {
             {!isOrganizer && !isGoing && (
               <button
                 type="button"
-                className="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 cursor-pointer max-w-2xs"
+                className="bg-darkTangerine text-white py-2 px-4 rounded-md hover:bg-orange-700 cursor-pointer max-w-2xs"
                 onClick={() => handleRsvp(true)}
               >
                 I'm going
@@ -126,7 +126,7 @@ const Event = () => {
                 {attendee.id === user.id && (
                   <button
                     type="button"
-                    className="bg-blue-500 text-white px-2 rounded-md hover:bg-blue-600 cursor-pointer max-w-2xs"
+                    className="bg-darkTangerine text-white px-2 rounded-md hover:bg-orange-700 cursor-pointer max-w-2xs"
                     onClick={() => handleRsvp(false)}
                   >
                     X

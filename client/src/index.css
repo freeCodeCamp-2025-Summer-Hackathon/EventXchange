@@ -6,10 +6,14 @@
   --font-chocoSans: "Chocolate Classical Sans", static;
 
   /* Colours */
-  /* --color- */
+  --color-darkTangerine: #FA9C1B
 }
 
-p, li {
+p, li, h1, h2, h3, h4, h5 {
   font-family: "Chocolate Classical Sans", static;
 }
 
+
+:root {
+  background-color: white;
+}

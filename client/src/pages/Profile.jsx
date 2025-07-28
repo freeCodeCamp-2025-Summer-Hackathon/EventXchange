@@ -11,7 +11,7 @@ function Profile(){
                 <div className="flex flex-row gap-10 justify-center w-3xl">
                     <img src={profilePic} alt="Profile Picture" className="inline-block rounded-full border-3 border-orange-500 w-30 h-30" />
                     
-                    <div className="border-l-3 border-blue-500 mw-[20vw] p-[15px]">
+                    <div className="border-l-3 border-orange-500 mw-[20vw] p-[15px]">
                         <p>Username: {userDummy[0].username}</p>
                         <p>Join Date: (mm/dd/yyyy)</p>
                         <p>User Rating: ?/10</p>
@@ -28,7 +28,7 @@ function Profile(){
                                 <h3 className="text-lg">{item.title}</h3>
                                 <p>{item.start[0]}</p>
                                 <p>{item.desc}</p>
-                                <button type="button" className="bg-blue-500 text-white py-2 px-4 rounded-full hover:bg-blue-600 cursor-pointer w-full max-w-2xs mt-10 m-auto">More Info!</button>
+                                <button type="button" className="bg-darkTangerine text-white py-2 px-4 rounded-full hover:bg-orange-700 cursor-pointer w-full max-w-2xs mt-10 m-auto">More Info!</button>
                             </div>))
                         }
                     </div>

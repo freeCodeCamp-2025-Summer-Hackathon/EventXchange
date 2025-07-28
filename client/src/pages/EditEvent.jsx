@@ -79,7 +79,7 @@ const EditEvent = () => {
   if (!eventData) return <p> Loading event ... </p>;
 
   return (
-    <div className="edit-event bg-gray-100 flex flex-col justify-center items-center">
+    <div className="edit-event bg-gray-100 flex flex-col justify-center items-center bg-gradient-to-b from-orange-50 to-white">
       <h1 className="text-center text-3xl mt-5 mb-5">Edit Event</h1>
 
       {showSuccess && (
@@ -143,7 +143,7 @@ const EditEvent = () => {
                 <img
                   src={image}
                   alt="Preview"
-                  className="w-xs grow shrink border-solid border-blue-400 border-2 rounded-xs"
+                  className="w-xs grow shrink border-solid border-orange-400 border-2 rounded-xs"
                   key={image}
                 />
               ))
@@ -251,7 +251,7 @@ const EditEvent = () => {
         <div className="mb-10 flex flex-col justify-center items-center gap-5">
           <button
             type="submit"
-            className="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 cursor-pointer w-full max-w-2xs"
+            className="bg-darkTangerine text-white py-2 px-4 rounded-md hover:bg-orange-700 cursor-pointer w-full max-w-2xs"
           >
             Save Event Changes
           </button>
